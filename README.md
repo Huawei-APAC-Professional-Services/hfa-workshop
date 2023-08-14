@@ -38,5 +38,5 @@ In the future, if the APIs are available, we can merge the two different modules
 
 
 ## Workshop Guidance
-If you would like to evaluate the reference HFA implementation, you can to to ![workshop](./workshop/) directory for detail guidance.
+If you would like to evaluate the reference HFA implementation, you can to to [workshop](./workshop/) directory for detail guidance.
 
