@@ -1,0 +1,3 @@
+# Resources
+| Name | Type |
+| ----- | ----- |
