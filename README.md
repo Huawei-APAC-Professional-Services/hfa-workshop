@@ -13,10 +13,12 @@ This is reference implementation of Huaweicloud HFA for workshop purpose, this i
 
 :high_brightness: In HFA, the master account also need to be initialized to implement security baseline and delegate some organization responsibilities to other accounts, Due to the accounts limitations of a guided workshop, this implementation won't do anything to the master account, but budget will be allocated in advance to member accounts.
 
-# Procedures To Terraform HFA
-Implementing all HFA elements through Terraform at this stage is not possible because of service limitations, you need to follow the following steps precisely to accomplish the goal.
+# Procedures To Terraform HFA Implementation
+Implementing all HFA elements with Terraform at this stage is not possible because of service limitations. In terms of security, identity segregation and least privilege are necessary. we follow the hierarchy below to implement HFA on Huawei Cloud.
+![HFA-Hierarchy](./HFA_Implementation_Hierarchy.png)
+you need to follow the following steps precisely to accomplish the goal.
 
-# Security Account
+## Security Account
 
 The security account serves as the central account for security operation and archiving security related logs across HFA accounts. 
 
