@@ -52,6 +52,13 @@ variable "hfa_network_state_key" {
   type = string
 }
 
+variable "hfa_network_workloads_state_key" {
+  type = string
+}
+
+variable "hfa_network_state_ingress_key" {
+  type = string
+}
 
 variable "hfa_app_state_key" {
   type    = string
@@ -96,10 +103,6 @@ variable "hfa_security_admin_agency_name" {
 variable "hfa_network_admin_agency_name" {
   type    = string
   default = "HFA-Network-Admin"
-}
-
-variable "hfa_network_state_ingress_key" {
-  type = string
 }
 
 variable "hfa_iam_account_pipeline_base_group_name" {

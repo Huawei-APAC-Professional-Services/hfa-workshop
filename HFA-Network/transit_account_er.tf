@@ -77,6 +77,6 @@ output "hfa_transit_er_prod_id" {
   value = huaweicloud_er_instance.hfa_transit_prod.id
 }
 
-output "hfa_transit_er_prod_rt" {
+output "hfa_transit_er_prod_rt_id" {
   value = huaweicloud_er_route_table.hfa_transit_prod.id
 }

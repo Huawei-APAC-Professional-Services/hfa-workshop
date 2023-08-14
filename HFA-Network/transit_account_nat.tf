@@ -20,3 +20,11 @@ resource "huaweicloud_vpc_eip" "hfa_transit_egress_prod_eip" {
     charge_mode = "traffic"
   }
 }
+
+output "hfa_transit_egress_prod_nat_id" {
+  value = huaweicloud_nat_gateway.hfa_transit_egress_prod.id
+}
+
+output "hfa_transit_egress_prod_eip_app_id" {
+  value = huaweicloud_vpc_eip.hfa_transit_egress_prod_eip.id
+}

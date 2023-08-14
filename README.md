@@ -13,23 +13,30 @@ This is reference implementation of Huaweicloud HFA for workshop purpose, this i
 
 :high_brightness: In HFA, the master account also need to be initialized to implement security baseline and delegate some organization responsibilities to other accounts, Due to the accounts limitations of a guided workshop, this implementation won't do anything to the master account, but budget will be allocated in advance to member accounts.
 
-# Procedures To Terraform HFA Implementation
-Implementing all HFA elements with Terraform at this stage is not possible because of service limitations. In terms of security, identity segregation and least privilege are necessary. we follow the hierarchy below to implement HFA on Huawei Cloud.
+# HFA Terraform Implementation Introduction
+Implementing all HFA elements with Terraform at this stage is not possible because of service limitations. we follow the hierarchy below to implement HFA on Huawei Cloud.
 
 ![HFA-Hierarchy](./HFA_Implementation_Hierarchy.png)
-you need to follow the following steps precisely to accomplish the goal.
 
-## Security Account
+By adopting the hierarchy, the complex enterprise environment is isolated into different terraform state files. Different level will use different credential that only can access the corresponding state file and assume different agency. Every level in this hierarchy can only write to the state file corresponding to this level but can read the state file one level down and the bottom level state file.
 
-The security account serves as the central account for security operation and archiving security related logs across HFA accounts. 
+The current HFA implementation hierarchy only contains four level, but it cloud be expanded to more levels to meet customer scenario. And it is also possible that one level contains multiple state file for different purpose.
 
-One OBS bucket in security account will be used to store all CTS system trace data that can only be accessed by security team out of security investigation and security operation purpose and by audit team for compliance reason.
+But with this approach, the state file still contains credentials and other sensitive information, normally the state file and relevant DevOps tools should be deployed in `Common Services Account`, but it will make the implementation more complex, so we will store state file in `Centralized IAM Account` to reduce the complexity for the workshop.
+ 
+The reference implementation contains multiple modules that are corresponding to the hierarchy, the following table describe this relationship
+|  Module  |  Hierarchy  |
+| -------- | ----------- |
+| HFA-IAM  |     IAM     |
+| HFA-Base |     Base    |
+| HFA-Network<br />HFA-Network-Ingress<br />HFA-Network-workloads | Network  |
+| HFA-App  | Application |
 
-For some enterprises, security operation relies on security solutions like SIEM, EASM, etc. The current HFA Terraform implementation does not including all those customized configurations, Please talk to customers and implement it in HFA-Security Level.
+`HFA-Network`, `HFA-Network-Ingress` and `HFA-Network-worklaods` are using the same credential but will write to different state file to avoid state file corruption. The splitting of network resources is the result of lacking API support from relevant network services. Before we can apply configurations in `HFA-Network-worklaods`, we need to do some manual configurations from console.
 
-Due to the current limitations of Terraform Huawei Cloud provider, the security Account can not be configured entirely through Terraform. The following configurations need to be configured manually, please refer to [Security Account Configuration](./workshop/08_Security_Setup.md) for details.
+In the future, if the APIs are available, we can merge the two different modules into one.
 
-* Enable CTS
 
-For all other configurations that will be configured automatically, Please refer to [Security Account Terraform Implementation](./HFA-Security/Log.md#security-account)
+## Workshop Guidance
+If you would like to evaluate the reference HFA implementation, you can to to `workshop` directory for detail guidance.
 
