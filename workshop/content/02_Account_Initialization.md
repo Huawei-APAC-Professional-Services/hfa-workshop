@@ -3,6 +3,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 
 # Tasks
 ## Create `hfa_terraform` Agency in other member accounts
+:hourglass: Team members can do this in different accounts simultaneously
 1. Use Huawei Cloud Account login into `Security Operation Account`
 2. Choose `Service List` on the top left corner of the console and Choose `Identify and Access Management`
 ![CreateAgency01](./images/006_CreateAgency_01.png)
@@ -19,7 +20,13 @@ At this moment, we can not manipulate member accounts directly from master accou
 6. Choose `Next`, make sure the Scope is `All resources`
 ![CreateAgency15](./images/006_CreateAgency_15.png)
 7. Choose `Next` to finish the agency creation
-8. Create the same agency in all other member accounts except `Centralized IAM Account` by repeating step 1 to step 7 within different accounts
+8. Choose `Projects` from left panel of IAM service
+![CreateAgency16](./images/006_CreateProject_18.png)
+9. If there is no `ap-southeast-1` project exists, choose `Create Project` on the top right corner of the page
+10. On the project creation page, select `AP-Singapore` from the dropdown menu for `Region` parameter and then choose `Cancel`, you can see a project for Singapore region has been created
+![CreateProject01](./images/006_CreateProject_19.png)
+![CreateProject02](./images/006_CreateProject_20.png)
+11. Create the same agency in all other member accounts except `Centralized IAM Account` by repeating step 1 to step 10
 
 ## Create a OBS bucket for terraform state storage
 1. Use Huawei Cloud Account login into `Centralized IAM Account`
@@ -42,7 +49,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 ![CreateAgency02](./images/006_CreateAgency_02.png)
 4. Create the `hfa_terraform` role by the following policy content to allow Terraform to create IAM resources in `Centralized IAM Account` and switch role to other accounts.
 
-:warning: Need to change the `Resource` element of the second statement with the bucket you create in [Create a OBS bucket for terraform state storage](#create-a-obs-bucket-for-terraform-state-storage)
+:warning: Need to change the `Resource` element of the second and third statement with the bucket you create in [Create a OBS bucket for terraform state storage](#create-a-obs-bucket-for-terraform-state-storage)
 ```
 {
     "Statement": [
@@ -68,7 +75,6 @@ At this moment, we can not manipulate member accounts directly from master accou
             "Effect": "Allow",
             "Action": [
                 "obs:object:GetObject",
-                "obs:bucket:GetBucketLocation",
                 "obs:object:DeleteObject",
                 "obs:object:PutObject",
                 "obs:object:ModifyObjectMetaData",
@@ -76,7 +82,18 @@ At this moment, we can not manipulate member accounts directly from master accou
             ],
             "Resource": [
             # replace the bucket name "hfa-terraform-state" with your bucket and delete this comment
-                "OBS:*:*:object:hfa-terraform-state/centraliam/terraform.tfstate"
+                "OBS:*:*:object:hfa-terraform-state/hfa-iam/terraform.tfstate"
+            ]
+        },
+        {
+            "Action": [
+                "obs:bucket:HeadBucket",
+                "obs:bucket:ListBucket"
+            ],
+            "Effect": "Allow",
+            # replace the bucket name "hfa-terraform-state" with your bucket and delete this comment
+            "Resource": [
+                "OBS:*:*:bucket:hfa-terraform-state"
             ]
         }
     ],

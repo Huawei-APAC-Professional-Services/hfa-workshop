@@ -1,0 +1,42 @@
+# Introduction
+In this module, we will deploy a nginx server in `Production Account`
+
+# Tasks
+## Configure Environment Variables
+1. Change to `hfa/HFA-IAM` directory
+2. Execute the following commands to get AK/SK for this module
+```
+terraform output hfa_iam_pipeline_app_ak
+terraform output hfa_iam_pipeline_app_sk
+```
+`hfa_iam_pipeline_app_ak` and `hfa_iam_pipeline_app_sk` allow terraform to read/write terraform state file and make API call to Huawei Cloud to create network resources
+3. Follow the instructions in ![Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
+The following figure use powershell as example
+![SetupEnvironmentVariables](./images/network/001_network_aksk_01.png)
+4. Change to  `hfa/HFA-Network` directory
+5. Open `obs.tfbackend` file to configure terraform backend
+6. Change the `bucket` and `key` parameters to the value that you designated in the `HFA-IAM` module
+7. Open `terraform.tfvars` file to configure input variables
+8. Change `hfa_terraform_state_bucket` and `hfa_iam_state_key` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
+9. Execute the following commands to format terraform configuration and Initialize terraform
+```
+terraform fmt
+terraform init -backend-config="obs.tfbackend"
+```
+10. Execute `terraform validate` to validate the correctness of the terraform configuration, you should get the following result:
+```
+Success! The configuration is valid
+```
+
+11. Execute `terraform plan` to generate a execution plan and view all the changes
+12. Execute `terraform apply` to apply all the configuration to Huawei Cloud and you will get the private ip address of nginx, copy it for next step
+![nginxip](./images/App/01_nginx_ip_01.png)
+13. Log in to `Transit Account`
+14. From `Service List`, search `cts` and choose `Elastic Load Balance`
+15. On the ELB page, Choose `Backend Server Groups` from left side panel and click `Add Backend Server` under the Operation column
+![elb01](./images/App/02_elb_01.png)
+16. Choose `IP as Backend Servers` tab and Click `Add`
+![elb02](./images/App/02_elb_02.png)
+17. Use nginx private address you got from step 12 as `Backend Server IP Address`, port is 80
+![elb03](./images/App/02_elb_03.png)
+18. Use ELB public address to test if you can access the nginx
