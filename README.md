@@ -2,14 +2,16 @@
 
 HFA is a well-architected, multi-account Huawei Cloud environment that  is a starting point from which you can deploy workloads and applications. It provides a baseline to get started with multi-account architecture, identity and access management, governance, data security, network design, and logging.
 
-HFA ollows key design principles across different design areas which accommodate all application portfolios and enable application migration, modernization, and innovation at scale.
+HFA follows key design principles across different design areas which accommodate all application portfolios and enable application migration, modernization, and innovation at scale.
 
-This is reference implementation of Huaweicloud HFA, this implementation will initialize the following accounts in HFA:
+This is reference implementation of Huaweicloud HFA for workshop purpose, this implementation will initialize the following accounts in HFA:
 * Centralized IAM Account
 * Common Services Account
 * Transit Account
 * Security Account
 * Production Account(workloads)
+
+:high_brightness: In HFA, the master account also need to be initialized to implement security baseline and delegate some organization responsibilities to other accounts, Due to the accounts limitations of a guided workshop, this implementation won't do anything to the master account, but budget will be allocated in advance to member accounts.
 
 # Procedures To Terraform HFA
 Implementing all HFA elements through Terraform at this stage is not possible because of service limitations, you need to follow the following steps precisely to accomplish the goal.
