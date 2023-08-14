@@ -15,6 +15,7 @@ This is reference implementation of Huaweicloud HFA for workshop purpose, this i
 
 # Procedures To Terraform HFA Implementation
 Implementing all HFA elements with Terraform at this stage is not possible because of service limitations. In terms of security, identity segregation and least privilege are necessary. we follow the hierarchy below to implement HFA on Huawei Cloud.
+
 ![HFA-Hierarchy](./HFA_Implementation_Hierarchy.png)
 you need to follow the following steps precisely to accomplish the goal.
 
