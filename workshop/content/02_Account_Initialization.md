@@ -4,7 +4,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 # Tasks
 ## Create `hfa_terraform` Agency in other member accounts
 :hourglass: Team members can do this in different accounts simultaneously
-1. Use Huawei Cloud Account login into `Security Operation Account`
+1. Use Huawei Cloud Account log in to `Security Operation Account`
 2. Choose `Service List` on the top left corner of the console and Choose `Identify and Access Management`
 ![CreateAgency01](./images/006_CreateAgency_01.png)
 3. Choose `Agencies` -> `Create Agency`
@@ -12,7 +12,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 4. On the `Create Agency` page, provide the following parameters
    Agency Name: `hfa_terraform` or names that conforms to your naming convention
    Agency Type: `account`
-   Delegated Account: Centralized IAM Account
+   Delegated Account: `Centralized IAM Account`
    Validity Period: Unlimited
 ![CreateAgency13](./images/006_CreateAgency_13.png)
 5. Choose `Next` and search and check `security administrator` in the search box
@@ -22,16 +22,16 @@ At this moment, we can not manipulate member accounts directly from master accou
 7. Choose `Next` to finish the agency creation
 8. Choose `Projects` from left panel of IAM service
 ![CreateAgency16](./images/006_CreateProject_18.png)
-9. If there is no `ap-southeast-1` project exists, choose `Create Project` on the top right corner of the page
+9. If there is no `ap-southeast-1` project exists, choose `Create Project` on the upper right corner of the page
 10. On the project creation page, select `AP-Singapore` from the dropdown menu for `Region` parameter and then choose `Cancel`, you can see a project for Singapore region has been created
 ![CreateProject01](./images/006_CreateProject_19.png)
 ![CreateProject02](./images/006_CreateProject_20.png)
 11. Create the same agency in all other member accounts except `Centralized IAM Account` by repeating step 1 to step 10
 
 ## Create a OBS bucket for terraform state storage
-1. Use Huawei Cloud Account login into `Centralized IAM Account`
+1. Use Huawei Cloud Account log in to `Centralized IAM Account`
 2. Choose `Object Storage Service`
-3. Choose `Create Bucket` on the top left of the console
+3. Choose `Create Bucket` on the upper left of the console
 4. For the bucket parameters, change the following parameters, leave the other parameters as default
 * Region: AP-Singapore
 * Bucket Name: choose a name as you like
@@ -42,8 +42,8 @@ At this moment, we can not manipulate member accounts directly from master accou
 ![IAMAccountInitialization02](./images/007_IAMAccountInitialization_03.png)
 
 ## Create `hfa_terraform` User and User Group
-1. Use Huawei Cloud Account login into `Centralized IAM Account`
-2. Choose `Service List` on the top left corner of the console and Choose `Identify and Access Management`
+1. Use Huawei Cloud Account log in to `Centralized IAM Account`
+2. Choose `Service List` on the upper left corner of the console and Choose `Identify and Access Management`
 ![CreateAgency01](./images/006_CreateAgency_01.png)
 3. Choose `Permissions` -> `Policies/Roles` -> `Create Custom Policy`
 ![CreateAgency02](./images/006_CreateAgency_02.png)
@@ -101,6 +101,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 }
 ```
 ![CreateAgency03](./images/006_CreateAgency_03.png)
+
 5. Terraform need KMS permission to write and read object from OBS, so create `hfa-terraform-kms` policy with the following policy
 ```
 {
@@ -145,7 +146,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 }
 ```
 ![CreateKMSrole](./images/006_CreateAgency_17.png)
-6. Choose `User Groups` at the left panel of the console and Choose `Create User Group` at the top right corner of the console
+6. Choose `User Groups` at the left panel of the console and Choose `Create User Group` at the upper right corner of the console
 ![CreateAgency04](./images/006_CreateAgency_04.png)
 7. Create `hfa_terraform` user group
 ![CreateAgency05](./images/006_CreateAgency_05.png)

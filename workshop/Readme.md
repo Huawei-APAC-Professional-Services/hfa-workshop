@@ -43,23 +43,3 @@ flowchart LR
     Account --> AccountInitialization[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/02_AccountInitialization.md'>Account Initialization</a>]
     
 ```
-
-```mermaid
-journey
-    title HFA Workshop
-    section Account Management
-        Enable Organization: 1 : Done
-        Create OU: 1 : Done
-        Create Account: 1 : Done
-        Allocate Budget: 1 : Done
-    section Account Initialization
-        Accounts Delegation: 10 : All
-        Terraform State Storage: 10 : First~~
-    section Apply Terraform Configuration
-        HFA-IAM: 9 : First
-        HFA-Base: 9 : Second
-        HFA-Network: 9 : Third
-        HFA-Netowrk-workloads: 9 : Third
-        HFA-App: 9 : Fourth
-        HFA-Integration: 9 : Fourth
-```
