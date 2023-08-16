@@ -8,6 +8,7 @@ resource "huaweicloud_identity_agency" "hfa_cts_agency" {
         roles   = [
             "KMS Administrator",
             "SMN Administrator",
+            "OBS Administrator"
         ]
     }
     project_role {
@@ -15,8 +16,11 @@ resource "huaweicloud_identity_agency" "hfa_cts_agency" {
         roles   = [
             "KMS Administrator",
             "SMN Administrator",
+            "OBS Administrator"
         ]
     }
+
+    all_resources_roles = ["Tenant Administrator"]
     
     lifecycle {
       ignore_changes = [ 

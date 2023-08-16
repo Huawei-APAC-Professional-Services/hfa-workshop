@@ -18,7 +18,7 @@ provider "huaweicloud" {
   alias  = "security"
 
   assume_role {
-    agency_name = var.hfa_iam_base_agency_name
+    agency_name = var.hfa_iam_agency_name
     domain_name = var.hfa_security_account
   }
 }
@@ -28,7 +28,7 @@ provider "huaweicloud" {
   alias  = "transit"
 
   assume_role {
-    agency_name = var.hfa_iam_base_agency_name
+    agency_name = var.hfa_iam_agency_name
     domain_name = var.hfa_transit_account
   }
 }
@@ -38,7 +38,7 @@ provider "huaweicloud" {
   alias  = "common"
 
   assume_role {
-    agency_name = var.hfa_iam_base_agency_name
+    agency_name = var.hfa_iam_agency_name
     domain_name = var.hfa_common_account
   }
 }
@@ -48,7 +48,7 @@ provider "huaweicloud" {
   alias  = "app"
 
   assume_role {
-    agency_name = var.hfa_iam_base_agency_name
+    agency_name = var.hfa_iam_agency_name
     domain_name = var.hfa_app_account
   }
 }

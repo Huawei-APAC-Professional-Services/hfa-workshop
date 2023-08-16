@@ -43,7 +43,8 @@ resource "huaweicloud_identity_role" "hfa_iam_pipeline_app" {
         ]
         "Resource" : [
           "OBS:*:*:object:${var.hfa_terraform_state_bucket}/${var.hfa_iam_state_key}",
-          "OBS:*:*:object:${var.hfa_terraform_state_bucket}/${var.hfa_network_state_key}"
+          "OBS:*:*:object:${var.hfa_terraform_state_bucket}/${var.hfa_network_state_key}",
+          "OBS:*:*:object:${var.hfa_terraform_state_bucket}/${var.hfa_network_workloads_state_key}"
         ]
       },
       {

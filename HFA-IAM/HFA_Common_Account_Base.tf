@@ -14,3 +14,7 @@ module "common_account_base_agency" {
 output "hfa_common_account" {
   value = var.hfa_common_account
 }
+
+output "hfa_common_account_custom_role_name" {
+  value = module.common_account_base_agency.hfa_custom_role_name
+}

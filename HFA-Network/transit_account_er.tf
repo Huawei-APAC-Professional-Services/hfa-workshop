@@ -1,7 +1,7 @@
 resource "huaweicloud_er_instance" "hfa_transit_prod" {
   provider                       = huaweicloud.transit
   availability_zones             = var.hfa_er_prod_azs
-  auto_accept_shared_attachments = false
+  auto_accept_shared_attachments = true
 
   name = var.hfa_er_prod_name
   asn  = var.hfa_er_prod_asn

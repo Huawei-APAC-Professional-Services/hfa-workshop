@@ -19,7 +19,7 @@ variable "hfa_network_admin_agency_name" {
 }
 
 variable "hfa_base_agency_name" {
-  default = "hfa_base_admin"
+  default = "hfa_base"
 }
 
 variable "hfa_cts_log_transfer_agency_name" {

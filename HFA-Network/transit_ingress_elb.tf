@@ -49,3 +49,10 @@ resource "huaweicloud_lb_pool" "hfa_transit_prod_ingress_nginx" {
   lb_method   = "SOURCE_IP"
   listener_id = huaweicloud_lb_listener.hfa_transit_prod_ingress_80.id
 }
+
+output "hfa_transit_nginx_pool_id" {
+  value = huaweicloud_lb_pool.hfa_transit_prod_ingress_nginx.id
+}
+
+// e765cdfe741a452cb6b9d96995f65696
+// 3b4562c66683454a9e4b77cb6d9571aa

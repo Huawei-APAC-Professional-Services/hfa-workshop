@@ -2,7 +2,7 @@ terraform {
   required_providers {
     huaweicloud = {
       source  = "huaweicloud/huaweicloud"
-      version = "1.51.0"
+      version = "~> 1.54.0"
     }
   }
   backend "s3" {}
@@ -33,6 +33,36 @@ provider "huaweicloud" {
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
     domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account
+  }
+}
+
+provider "huaweicloud" {
+  region = var.hfa_default_region
+  alias  = "app"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_app_account
+  }
+}
+
+provider "huaweicloud" {
+  region = var.hfa_default_region
+  alias  = "transit"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account
+  }
+}
+
+provider "huaweicloud" {
+  region = var.hfa_default_region
+  alias  = "common"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_common_account
   }
 }
 

@@ -18,6 +18,10 @@ variable "hfa_network_state_key" {
   type = string
 }
 
+variable "hfa_network_workload_state_key" {
+  type = string
+}
+
 variable "hfa_default_region" {
   type        = string
   description = "Using default region otherwise specified"

@@ -18,7 +18,7 @@ Implementing all HFA elements with Terraform at this stage is not possible becau
 
 ![HFA-Hierarchy](./HFA_Implementation_Hierarchy.png)
 
-By adopting the hierarchy, the complex enterprise environment is isolated into different terraform state files. Different level will use different credential that only can access the corresponding state file and assume different agency. Every level in this hierarchy can only write to the state file corresponding to this level but can read the state file one level down and the bottom level state file.
+By adopting the hierarchy, the complex enterprise environment is isolated into different terraform state files. Different level will use different credential that only can access the corresponding state file and assume different agency. In principal, Every level in this hierarchy can only write to the state file corresponding to this level but can read the state file one level down and the bottom level state file. But currently we may need to read state file from multiple underlying level due to the incomplete API support from certain services.
 
 The current HFA implementation hierarchy only contains four level, but it cloud be expanded to more levels to meet customer scenario. And it is also possible that one level contains multiple state file for different purpose.
 

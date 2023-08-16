@@ -52,15 +52,6 @@ variable "nat_gateway_spec" {
   default = "1"
 }
 
-variable "hfa_app_prod_cidr" {
-  type    = string
-  default = "10.20.0.0/16"
-}
-
-variable "hfa_common_prod_cidr" {
-  type = string
-}
-
 variable "hfa_transit_ingress_prod_cidr" {
   type = string
 }

@@ -14,3 +14,7 @@ module "app_account_base_agency" {
 output "hfa_app_account" {
   value = var.hfa_app_account
 }
+
+output "hfa_app_account_custom_role_name" {
+  value = module.app_account_base_agency.hfa_custom_role_name
+}

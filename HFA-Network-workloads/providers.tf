@@ -56,3 +56,23 @@ provider "huaweicloud" {
     domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account
   }
 }
+
+provider "huaweicloud" {
+  region = var.hfa_default_region
+  alias  = "common"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_network_admin_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_common_account
+  }
+}
+
+provider "huaweicloud" {
+  region = var.hfa_default_region
+  alias  = "app"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_network_admin_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_app_account
+  }
+}

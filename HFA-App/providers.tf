@@ -40,6 +40,19 @@ data "terraform_remote_state" "hfa_network" {
   }
 }
 
+data "terraform_remote_state" "hfa_network_workload" {
+  backend = "s3"
+  config = {
+    bucket                      = var.hfa_terraform_state_bucket
+    key                         = var.hfa_network_workload_state_key
+    region                      = var.hfa_terraform_state_region
+    endpoint                    = "https://obs.ap-southeast-3.myhuaweicloud.com"
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_region_validation      = true
+  }
+}
+
 # Need to set HW_ACCESS_KEY and HW_SECRET_KEY environment variables for default provider
 # Default provider which will have access to Central IAM accounts, all ohter provider will be 
 # assuming agency to access other accounts 

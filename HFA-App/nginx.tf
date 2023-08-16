@@ -23,11 +23,11 @@ resource "huaweicloud_compute_instance" "nginx" {
   admin_pass         = var.nginx_admin_pass
   user_data          = file("nginx_init.yaml")
   flavor_id          = data.huaweicloud_compute_flavors.nginxflavor.ids[0]
-  security_group_ids = [data.terraform_remote_state.hfa_network.outputs.hfa_app_prod_nginx_secgroup_id]
+  security_group_ids = [data.terraform_remote_state.hfa_network_workload.outputs.hfa_app_prod_nginx_secgroup_id]
   availability_zone  = data.huaweicloud_availability_zones.zones.names[0]
 
   network {
-    uuid = data.terraform_remote_state.hfa_network.outputs.hfa_app_prod_subnet_id
+    uuid = data.terraform_remote_state.hfa_network_workload.outputs.hfa_app_prod_subnet_id
   }
 }
 

@@ -3,7 +3,7 @@ variable "hfa_default_region" {
   description = "Using default region otherwise specified"
   default     = "ap-southeast-3"
 }
-variable "hfa_iam_base_agency_name" {
+variable "hfa_iam_agency_name" {
   type        = string
   description = "HFA IAM Agency Name in every acount except Central IAM Account for delegating permission to IAM Account"
   default     = "hfa_terraform"
@@ -70,6 +70,11 @@ variable "hfa_base_state_key" {
   default = "hfa-base/terraform.tfstate"
 }
 
+variable "hfa_integration_state_key" {
+  type = string
+  default = "hfa-integration/terraform.tfstate"
+}
+
 variable "hfa_iam_acccount_security_group_name" {
   type    = string
   default = "HFA_Security"
@@ -95,6 +100,16 @@ variable "hfa_iam_account_pipeline_app_user_name" {
   default = "HFA_Pipeline_App"
 }
 
+variable "hfa_iam_account_pipeline_integration_group_name" {
+  type = string
+  default = "hfa_pipeline_integration"
+}
+
+variable "hfa_iam_account_pipeline_integration_user_name" {
+  type = string
+  default = "hfa_pipeline_integration"
+}
+
 variable "hfa_security_admin_agency_name" {
   type    = string
   default = "HFA-Security-Admin"
@@ -117,7 +132,7 @@ variable "hfa_iam_account_pipeline_base_user_name" {
 
 variable "hfa_base_agency_name" {
   type = string
-  default = "hfa_base_admin"
+  default = "hfa_base"
 }
 
 variable "hfa_cts_log_transfer_agency_name" {
