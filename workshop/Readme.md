@@ -9,10 +9,10 @@ We hope this workshop will help you gain the necessary knowledge about HFA and T
 * Expanse the environment with confidence
 
 # Target audience
-This is a technical workshop helping customer build their Huawei Cloud HFA environment with Terraform. The participants should have familiarity with Huawei Cloud and HFA as well.
+This is a technical workshop helping customer build their Huawei Cloud HFA environment with Terraform. The participants should have experiences with Huawei Cloud and have basic knowledge of HFA.
 
 # Prerequisites
-Unless you participate a guided workshop, you will need to meet the requirements below to complete the work hop.
+Unless you participate a guided workshop, you will need to meet the requirements below to complete the workshop.
 
 * A Huawei Cloud account - Master/Management Account
 * 5 email addresses, one for each of the following Huawei Cloud accounts:
@@ -24,10 +24,9 @@ Unless you participate a guided workshop, you will need to meet the requirements
 
 you can use Plus Addressing to reduce the complexity of managing multiple email addresses. if your email address is `g@gmail.com`, you can use `g+iam@gmail.com` or `g+transit@gmail.com` to register with Huawei Cloud, all the addresses are valid and can reach the inbox of the `g@gmail.com`.
 
-# Guided workshop
-You will get a list of Huawei Cloud accounts if you participate a workshop hosting by Huawei. we will use a conventional name to identify all those accounts, Please refer to the following table for the relationship between a account alias and its conventional name.
+Whenever we mention a account with a conventional name in this workshop, you can map it to a account entity provided by the workshop facilitators. Please refer to the following table to log in to specific HFA member account to finish the hands-on lab accordingly.
 
-| Account Alias | Conventional Name |
+| Account Name | Conventional Name |
 | ------------- | ----------------- |
 | ${prefix}_iam | Centralized IAM Account |
 | ${prefix}_security | Security Operation Account |
@@ -43,4 +42,24 @@ flowchart LR
     Start[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/00_CustomerCase.md'>Customer Case</a>] --> Account[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/01_AccountManagement.md'>Account Management</a>]
     Account --> AccountInitialization[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/02_AccountInitialization.md'>Account Initialization</a>]
     
+```
+
+```mermaid
+journey
+    title HFA Workshop
+    section Account Management
+        Enable Organization: 1 : Done
+        Create OU: 1 : Done
+        Create Account: 1 : Done
+        Allocate Budget: 1 : Done
+    section Account Initialization
+        Accounts Delegation: 10 : All
+        Terraform State Storage: 10 : First~~
+    section Apply Terraform Configuration
+        HFA-IAM: 9 : First
+        HFA-Base: 9 : Second
+        HFA-Network: 9 : Third
+        HFA-Netowrk-workloads: 9 : Third
+        HFA-App: 9 : Fourth
+        HFA-Integration: 9 : Fourth
 ```

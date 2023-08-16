@@ -1,7 +1,9 @@
 # Introduction
 In this workshop, the following organization structure are designed for the customer to meet their business and governance requirements.
 
-This is the foundation of this workshop, all the OUs and accounts must be created manually.
+This is the foundation of this workshop, all the OUs and accounts have been created manually in advance. if you don't familiar with the process，you can go through the steps quickly.
+
+
 
 ```mermaid
 erDiagram
@@ -14,9 +16,9 @@ erDiagram
     Production_OU ||--o{ Production_Account : contains
 ``` 
 # Tasks
-## Create OU
+## Create OUs
 1. Login into Master Account
-2. On the top panel of Huawei Cloud console, Choose "More" -> "Enterprise" -> "Organizations and Accounts"
+2. On the upper right corner of Huawei Cloud console, Choose "More" -> "Enterprise" -> "Organizations and Accounts"
 ![GotoOrganizationService](./images/001_CreateOU.png)
 3. Under `Organizations and Accounts`, choose `Create Organization`
 ![CreateOU](./images/002_CreateOU.png)
@@ -27,16 +29,20 @@ erDiagram
 
 ## Create Accounts
 1. Login into Master Account
-2. On the top panel of Huawei Cloud console, Choose "More" -> "Enterprise" -> "Organizations and Accounts"
+2. On the upper right corner of Huawei Cloud console, Choose "More" -> "Enterprise" -> "Organizations and Accounts"
 ![GotoOrganizationService](./images/001_CreateOU.png)
-3. On the `Organization Management` page, choose `Add member account` at the `Operation` field for a specific OU
+3. On the `Organization Management` page, choose `Add member account` at the `Operation` column for a specific OU
 ![CreateAccountStep1](./images/004_CreateAccounts.png)
 4. On the new page, choose `Create Member Account`
 ![CreateAccountStep2](./images/005_CreateAccounts_01.png)
-5. Choose `Next`, provide the Account Name and Email Address as defined before
+5. Choose `Next`, provide the Account Name and Email Address
 ![CreateAccountStep3](./images/005_CreateAccounts_02.png)
 6. Choose `Next`, provide a alias for the to be created account and select the permission for managing your member account
 ![CreateAccountStep4](./images/005_CreateAccounts_03.png)
-7. Choose `Next`, check if all the information is correct, choose `Obtain Verification Code` to send a verification code to the provided email address, once you get the verification code, enter the verification code and choose `Submit` to finish account creation process
+7. Choose `Next`, check if all the information is correct, choose `Obtain Verification Code` to get the verification code send to the provided email address, once you get the verification code, enter the verification code and choose `Submit` to finish account creation process
 ![CreateAccountStep5](./images/005_CreateAccounts_04.png)
 8. Create all other accounts by repeating step 3 to 7
+
+## Allocate Budget
+Sufficient budget must be allocated to all the member accounts before starting to use any non-free services.
+

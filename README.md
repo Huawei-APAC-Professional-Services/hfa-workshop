@@ -31,8 +31,9 @@ The reference implementation contains multiple modules that are corresponding to
 | HFA-Base |     Base    |
 | HFA-Network<br />HFA-Network-Ingress<br />HFA-Network-workloads | Network  |
 | HFA-App  | Application |
+| HFA-Integration | Application |
 
-`HFA-Network`, `HFA-Network-Ingress` and `HFA-Network-worklaods` are using the same credential but will write to different state file to avoid state file corruption. The splitting of network resources is the result of lacking API support from relevant network services. Before we can apply configurations in `HFA-Network-worklaods`, we need to do some manual configurations from console.
+`HFA-Network` and `HFA-Network-worklaods` are using the same credential but will write to different state file to avoid state file corruption. The splitting of network resources is the result of lacking API support from relevant network services. Before we can apply configurations in `HFA-Network-worklaods`, we need to do some manual configurations from console like sharing ER in the `Transit Account` with other member accounts that need a vpc network.
 
 In the future, if the APIs are available, we can merge the two different modules into one.
 
