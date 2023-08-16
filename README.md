@@ -29,7 +29,7 @@ The reference implementation contains multiple modules that are corresponding to
 | -------- | ----------- |
 | HFA-IAM  |     IAM     |
 | HFA-Base |     Base    |
-| HFA-Network<br />HFA-Network-Ingress<br />HFA-Network-workloads | Network  |
+| HFA-Network<br />HFA-Network-workloads | Network  |
 | HFA-App  | Application |
 | HFA-Integration | Application |
 
