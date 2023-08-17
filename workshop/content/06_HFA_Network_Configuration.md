@@ -58,8 +58,8 @@ Success! The configuration is valid
 20. Log in to the `Common Services Account` and `Production Account` separately and set the default vpc route(0.0.0.0/0) to ER 
 ![er05](./images/network/003_network_er_06.png)
 
-## Create Ingress Resources
-1. Change to  `hfa/HFA-Network-Ingress` directory
+## Apply hfa/HFA- Network-workloads Configuration
+1. Change to  `hfa/HFA-Network-workloads` directory
 2. Open `obs.tfbackend` file to configure terraform backend
 3. Change the `bucket` and `key` parameters to the value that you designated in the `HFA-IAM` module
 4. Open `terraform.tfvars` file to configure input variables
