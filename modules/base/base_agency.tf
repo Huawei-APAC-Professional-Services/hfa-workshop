@@ -3,7 +3,7 @@ resource "huaweicloud_identity_agency" "hfa_base_agency" {
   description           = "Allow infra team to configure all basic resources in a member account"
   delegated_domain_name = var.hfa_iam_account
 
-  all_resources_roles = ["OBS Administrator","IAM ReadOnlyAccess","CTS Administrator"]
+  all_resources_roles = ["OBS Administrator","IAM ReadOnlyAccess","CTS Administrator","SMN Administrator"]
 }
 
 output "hfa_base_agency_id" {

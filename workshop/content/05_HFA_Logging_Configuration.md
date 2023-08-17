@@ -1,60 +1,33 @@
 # Introduction
-Currently due to the limitations of IAM, OBS does not support creating bucket from another account by switching role, so the bucket for centralized logging must be created manually. in the future, if iam allowed assumed role to create the OBS bucket, the bucket can be imported to terraform state.
+Security Logs are important for security operation, we will transfer all CTS logs from every region of every account to the `Security Operation Account` for log archive.
 
 # Tasks
-## Create OBS bucket in `Security Operation Account` for central logging
-1. Log in to `Security Operation Account` using Huawei Cloud account credential
-2. From `Service List`, select `Object Storage Service` and choose `Create Bucket`
-3. On the creation page,  select `AP-Singapore` as the region, and provide a uniq name, for the workshop, the default value for the rest parameters is sufficient.
-![CreateBucket](./images/Logging/001_CreateBucket_01.png)
+## Configure Environment Variables
+1. Change to `hfa/HFA-Base` directory
+2. Execute the following commands with `hfa_terraform` credential to get AK/SK for this module
+```
+terraform output hfa_iam_pipeline_network_ak
+terraform output hfa_iam_pipeline_network_sk
+```
+3. Follow the instructions in [Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
+The following figure use powershell as example
+[SetupEnvironmentVariables](./images/network/001_network_aksk_01.png)
 
-## Enable CTS in `Security Operation Account`
-1. Log in to `Security Operation Account` using Huawei Cloud account credential
-2. From `Service List`, search `cts` and choose `Cloud Trace Service`
-![SelectCTS](./images/Logging/002_cts_01.png)
-3. On the left side panel of `Cloud Trace Service`, Choose `Tracker List` and Click `+Enable CTS` on the top right corner of the page
-![EnableCTS](./images/Logging/002_cts_02.png)
-4. On the Pop-up browser window, choose `Enable`
-![EnableCTS01](./images/Logging/002_cts_04.png)
-5. After the system tracker is created， Choose `Configure` under the `Operation` column
-![EnableCTS02](./images/Logging/002_cts_05.png)
-6. In the configuration, change the configuration to allow CTS transfer log to the LTS
-![Transferlog](./images/Logging/002_cts_08.png)
-7. From `Service List`, search `lts` and choose `Log Tank Service`
-![lts01](./images/Logging/003_lts_01.png)
-8. On the left side panel of `Log Tank Service`, Choose `Log Transfer`
-![lts02](./images/Logging/003_lts_02.png)
-9. Choose `Configure Log Transfer` on the upper right corner of the console
-10. Configure Log Transfer to transfer cts log to the bucket created in ![The Firt task](#create-obs-bucket-in-security-operation-account-for-central-logging)
-![lts03](./images/Logging/003_lts_03.png)
+4. Open `obs.tfbackend` file to configure terraform backend
+5. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform policy](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+6. Open `terraform.tfvars` file to configure input variables
+7. Change `hfa_terraform_state_bucket` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
+8. Execute the following commands to format terraform configuration and Initialize terraform
+```
+terraform fmt
+terraform init -backend-config="obs.tfbackend"
+```
 
-## Enable CTS in other accounts
-1. Log in to `Centralized IAM Account`, `Transit Account`, `Common Services Account` and `Production Account` to do the following configuration separately
-2. From `Service List`, search `cts` and choose `Cloud Trace Service`
-![SelectCTS](./images/Logging/002_cts_01.png)
-3. On the left side panel of `Cloud Trace Service`, Choose `Tracker List` and Click `+Enable CTS` on the top right corner of the page
-![EnableCTS](./images/Logging/002_cts_02.png)
-4. On the Pop-up browser window, choose `Enable`
-![EnableCTS01](./images/Logging/002_cts_04.png)
-5. After the system tracker is created， Choose `Configure` under the `Operation` column
-![EnableCTS02](./images/Logging/002_cts_05.png)
-6. In the configuration, change the configuration to allow CTS transfer log to the LTS
-![Transferlog](./images/Logging/002_cts_08.png)
+9. Execute `terraform validate` to validate the correctness of the terraform configuration, you should get the following result:
+```
+Success! The configuration is valid
+```
 
-## Transfer CTS Log to `Security Operation Account`
-1. Log in to `Security Operation Account` using Huawei Cloud account credential
-2. From `Service List`, search `lts` and choose `Log Tank Service`
-![lts01](./images/Logging/003_lts_01.png)
-3. On the left side panel of `Log Tank Service`, Choose `Log Transfer`
-![lts02](./images/Logging/003_lts_02.png)
-4. Choose `Configure Log Transfer` on the upper right corner of the console
-5. In the configuration page, configure the parameters as following:
-* Agency Name: `hfa_log_transfer`
-* Delegator Account Name: member accounts of this organization
-* Enable Transfer: true
-* Transfer Destination: OBS
-* Log Group Name: CTS
-* Log Stream Name: system-trace
-* OBS Bucket: Name of the bucket created in ![The Firt task](#create-obs-bucket-in-security-operation-account-for-central-logging)
-![lts04](./images/Logging/003_lts_04.png)
-6. Repeat step 4 to step 5 until all member accounts have been configured
+10. Execute `terraform plan` to generate a execution plan and view all the changes
+
+11. Execute `terraform apply` to apply all the configuration to Huawei Cloud

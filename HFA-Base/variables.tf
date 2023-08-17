@@ -23,3 +23,7 @@ variable "hfa_terraform_state_region" {
 variable "hfa_iam_state_key" {
   type = string
 }
+
+variable "hfa_cts_notification_email_address" {
+  type = string
+}
