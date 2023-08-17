@@ -2,7 +2,7 @@
 At this moment, we can not manipulate member accounts directly from master account, so a agency in every member account except `Centralized IAM Account` should be created manually in advance to allow Terraform access.
 
 # Tasks
-## Create `hfa_terraform` Agency in other member accounts
+## Create `hfa_terraform` Agency in member accounts
 :hourglass: Team members can do this in different accounts simultaneously
 1. Use Huawei Cloud Account log in to `Security Operation Account`
 2. Choose `Service List` on the top left corner of the console and Choose `Identify and Access Management`
