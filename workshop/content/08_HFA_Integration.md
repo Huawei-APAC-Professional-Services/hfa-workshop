@@ -1,21 +1,23 @@
 # Introduction
-In this module, we will deploy a nginx server in `Production Account`
+This module will responsible for connecting different components on different layer
 
 # Tasks
 ## Configure Environment Variables
 1. Change to `hfa/HFA-IAM` directory
-2. Execute the following commands to get AK/SK for this module
+2. Execute the following commands with `hfa_terraform` credential to get AK/SK for this module
 ```
-terraform output hfa_iam_pipeline_app_ak
-terraform output hfa_iam_pipeline_app_sk
+terraform output hfa_iam_pipeline_network_ak
+terraform output hfa_iam_pipeline_network_sk
 ```
-`hfa_iam_pipeline_app_ak` and `hfa_iam_pipeline_app_sk` allow terraform to read/write terraform state file and make API call to Huawei Cloud to create network resources
-3. Follow the instructions in ![Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
-The following figure use powershell as example
-![SetupEnvironmentVariables](./images/network/001_network_aksk_01.png)
+`hfa_iam_pipeline_network_ak` and `hfa_iam_pipeline_network_sk` allow terraform to read/write terraform state file and make API call to Huawei Cloud to create network resources
+![GetAKSK](./images/network/001_network_aksk.png)
 
-## Apply hfa/HFA-App Configuration
-4. Change to  `hfa/HFA-App` directory
+3. Follow the instructions in [Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
+The following figure use powershell as example
+[SetupEnvironmentVariables](./images/network/001_network_aksk_01.png)
+
+## Apply hfa/HFA-Integration Configuration
+4. Change to  `hfa/HFA-Integration` directory
 5. Open `obs.tfbackend` file to configure terraform backend
 6. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform policy](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 7. Open `terraform.tfvars` file to configure input variables

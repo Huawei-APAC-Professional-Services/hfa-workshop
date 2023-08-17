@@ -1,9 +1,9 @@
-variable "HFA_Security_OBS_Bucket_Name" {
+variable "hfa_security_obs_bucket_name" {
   type        = string
   description = "OBS Bucket for storing security related logs"
   default     = ""
   validation {
-    condition     = var.HFA_Security_OBS_Bucket_Name != "" || can(regex("^[a-z0-9-.]+$", var.HFA_Security_OBS_Bucket_Name))
+    condition     = var.hfa_security_obs_bucket_name != "" || can(regex("^[a-z0-9-.]+$", var.hfa_security_obs_bucket_name))
     error_message = "Invalid Bucket Name, can only contains lower letters,hyphens,period"
   }
 }
