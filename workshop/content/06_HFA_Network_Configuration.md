@@ -4,7 +4,7 @@ This module will responsible for creating all the network resources across diffe
 # Tasks
 ## Configure Environment Variables
 1. Change to `hfa/HFA-IAM` directory
-2. Execute the following commands with `hfa_terraform` credential to get AK/SK for this module
+2. Execute the following commands with `hfa_terraform` user credential to get AK/SK for this module
 ```
 terraform output hfa_iam_pipeline_network_ak
 terraform output hfa_iam_pipeline_network_sk
@@ -51,28 +51,16 @@ Success! The configuration is valid
 16. On the new page, click `Sahre Enterprise Router` and provide the saved account id to share ER with `Common Services Account` and `Production Account`
 ![er02](./images/network/003_network_er_03.png)
 ![er03](./images/network/003_network_er_04.png)
-17. Copy `prod_app_account_vpc_1.tf` from `hfa/HFA-Network-phase-2`to `hfa/HFA-Network` directory
-18. Execute `terraform apply` command
-19. During `terraform apply`, you need to go back to `Transit Account` to accept the attachment, Terraform will failed otherwise
-![er04](./images/network/003_network_er_05.png)
-20. Log in to the `Common Services Account` and `Production Account` separately and set the default vpc route(0.0.0.0/0) to ER 
-![er05](./images/network/003_network_er_06.png)
-
-## Apply hfa/HFA- Network-workloads Configuration
-1. Change to  `hfa/HFA-Network-workloads` directory
-2. Open `obs.tfbackend` file to configure terraform backend
-3. Change the `bucket` and `key` parameters to the value that you designated in the `HFA-IAM` module
-4. Open `terraform.tfvars` file to configure input variables
-5. Change `hfa_terraform_state_bucket`, `hfa_iam_state_key` and `hfa_network_state_key ` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
-6. Execute the following commands to format terraform configuration and Initialize terraform
+17. Change to  `hfa/HFA-Network-workloads` directory
+18. Open `obs.tfbackend` file to configure terraform backend
+19. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform policy](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+20. Open `terraform.tfvars` file to configure input variables
+21. Change `hfa_terraform_state_bucket` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
+22. Execute the following commands to format terraform configuration and Initialize terraform
 ```
 terraform fmt
 terraform init -backend-config="obs.tfbackend"
 ```
-7. Execute `terraform validate` to validate the correctness of the terraform configuration, you should get the following result:
-```
-Success! The configuration is valid
-```
-
-8. Execute `terraform plan` to generate a execution plan and view all the changes
-9. Execute `terraform apply` to apply all the configuration to Huawei Cloud
+23. Execute `terraform apply` command
+24. Log in to the `Common Services Account` and `Production Account` separately and set the default vpc route(0.0.0.0/0) to ER 
+![er05](./images/network/003_network_er_06.png)

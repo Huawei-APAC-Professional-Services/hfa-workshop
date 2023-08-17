@@ -5,7 +5,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 ## Create `hfa_terraform` Agency in HFA accounts
 :hourglass: Team members can do this in different accounts simultaneously
 1. Use Huawei Cloud Account log in to `Security Operation Account`
-2. Choose `Service List` on the top left corner of the console and Choose `Identify and Access Management`
+2. Choose `Service List` on the upper left corner of the console and Choose `Identify and Access Management`
 ![CreateAgency01](./images/006_CreateAgency_01.png)
 3. Choose `Agencies` -> `Create Agency`
 ![CreateAgency12](./images/006_CreateAgency_12.png)
@@ -155,7 +155,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 ![CreateAgency07](./images/006_CreateAgency_07.png)
 ![CreateAgency08](./images/006_CreateAgency_08.png)
 ![CreateAgency09](./images/006_CreateAgency_09.png)
-9. Create `hfa_terraform` and add it to the `hfa_terraform` user group, Please note that this user should only have `Programmatic access` to Huawei Cloud
+9. Create `hfa_terraform` user and add it to the `hfa_terraform` user group, Please note that this user should only have `Programmatic access` to Huawei Cloud
 ![CreateAgency10](./images/006_CreateAgency_10.png)
 ![CreateAgency11](./images/006_CreateAgency_11.png)
 

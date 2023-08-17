@@ -56,10 +56,6 @@ variable "hfa_network_workloads_state_key" {
   type = string
 }
 
-variable "hfa_network_state_ingress_key" {
-  type = string
-}
-
 variable "hfa_app_state_key" {
   type    = string
   default = "hfa-app/terraform.tfstate"
@@ -71,7 +67,7 @@ variable "hfa_base_state_key" {
 }
 
 variable "hfa_integration_state_key" {
-  type = string
+  type    = string
   default = "hfa-integration/terraform.tfstate"
 }
 
@@ -101,12 +97,12 @@ variable "hfa_iam_account_pipeline_app_user_name" {
 }
 
 variable "hfa_iam_account_pipeline_integration_group_name" {
-  type = string
+  type    = string
   default = "hfa_pipeline_integration"
 }
 
 variable "hfa_iam_account_pipeline_integration_user_name" {
-  type = string
+  type    = string
   default = "hfa_pipeline_integration"
 }
 
@@ -121,21 +117,21 @@ variable "hfa_network_admin_agency_name" {
 }
 
 variable "hfa_iam_account_pipeline_base_group_name" {
-  type = string
+  type    = string
   default = "hfa_pipeline_base"
 }
 
 variable "hfa_iam_account_pipeline_base_user_name" {
-  type = string
+  type    = string
   default = "hfa_pipeline_base"
 }
 
 variable "hfa_base_agency_name" {
-  type = string
+  type    = string
   default = "hfa_base"
 }
 
 variable "hfa_cts_log_transfer_agency_name" {
-  type = string
+  type    = string
   default = "hfa_log_transfer"
 }

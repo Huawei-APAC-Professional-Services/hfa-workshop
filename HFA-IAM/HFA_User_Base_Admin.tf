@@ -10,6 +10,10 @@ data "huaweicloud_identity_role" "hfa_obs_admin" {
   display_name = "OBS Administrator"
 }
 
+data "huaweicloud_identity_role" "hfa_smn_admin" {
+  display_name = "SMN FullAccess"
+}
+
 resource "huaweicloud_identity_group" "hfa_iam_pipeline_base" {
   name        = var.hfa_iam_account_pipeline_base_group_name
   description = "network Group in Central IAM Account allowing network operations in member account"
@@ -96,6 +100,12 @@ resource "huaweicloud_identity_group_role_assignment" "hfa_iam_pipeline_base_cts
 resource "huaweicloud_identity_group_role_assignment" "hfa_iam_pipeline_base_obsadmin" {
   group_id   = huaweicloud_identity_group.hfa_iam_pipeline_base.id
   role_id    = data.huaweicloud_identity_role.hfa_obs_admin.id
+  project_id = "all"
+}
+
+resource "huaweicloud_identity_group_role_assignment" "hfa_iam_pipeline_base_smnadmin" {
+  group_id   = huaweicloud_identity_group.hfa_iam_pipeline_base.id
+  role_id    = data.huaweicloud_identity_role.hfa_smn_admin.id
   project_id = "all"
 }
 

@@ -34,3 +34,4 @@ Success! The configuration is valid
 
 11. Execute `terraform plan` to generate a execution plan and view all the changes
 12. Execute `terraform apply` to apply all the configuration to Huawei Cloud
+13. Log in to `Transit Account` and find ELB public address, find if you can access the nginx

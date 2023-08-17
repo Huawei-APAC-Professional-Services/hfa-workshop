@@ -10,7 +10,7 @@ terraform output hfa_iam_pipeline_app_ak
 terraform output hfa_iam_pipeline_app_sk
 ```
 `hfa_iam_pipeline_app_ak` and `hfa_iam_pipeline_app_sk` allow terraform to read/write terraform state file and make API call to Huawei Cloud to create network resources
-3. Follow the instructions in ![Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
+3. Follow the instructions in [Loal Environment Setup](./03_Local_Env_Setup.md#configure-environment-variables) to configure both sets of environment variables.
 The following figure use powershell as example
 ![SetupEnvironmentVariables](./images/network/001_network_aksk_01.png)
 
