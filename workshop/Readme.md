@@ -39,7 +39,7 @@ Following the sequence to implement HFA on Huawei Cloud
 
 ```mermaid
 flowchart LR
-    Start[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/00_CustomerCase.md'>Customer Case</a>] --> Account[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/01_AccountManagement.md'>Account Management</a>]
+    Account[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/01_AccountManagement.md'>Account Management</a>]
     Account --> AccountInitialization[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa/blob/main/workshop/content/02_AccountInitialization.md'>Account Initialization</a>]
     
 ```
