@@ -44,14 +44,15 @@ flowchart LR
     Account --> AccountInitialization[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/02_Account_Initialization.md'>Account Initialization</a>]
     style AccountInitialization fill:#33FF36,stroke:#333,stroke-width:1px
     AccountInitialization --> LocalEnvironmentSetup[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/03_Local_Env_Setup.md'>Local Environment Setup</a>]
-    style LocalEnvironmentSetup fill:#33FF36,stroke:#333,stroke-width:1px
+    style LocalEnvironmentSetup fill:#3633FF,stroke:#333,stroke-width:1px
     LocalEnvironmentSetup --> HFA_IAM_Configuration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/04_HFA_IAM_Configuration.md'>HFA IAM Configuration</a>]
     style HFA_IAM_Configuration fill:#33FF36,stroke:#333,stroke-width:1px
     HFA_IAM_Configuration --> HFA_Base_Configuration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/05_HFA_Base_Configuration.md'>HFA Base Configuration</a>]
     style HFA_Base_Configuration fill:#33FF36,stroke:#333,stroke-width:1px
-    HFA_Base_Configuration --> HFA_Network_Configuration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/06_HFA_Network_Configuration.md'>HFA Network Configuration</a>]
+     HFA_IAM_Configuration --> HFA_Network_Configuration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/06_HFA_Network_Configuration.md'>HFA Network Configuration</a>]
     style HFA_Network_Configuration fill:#33FF36,stroke:#333,stroke-width:1px
     HFA_Network_Configuration --> HFA_Application_Deployment[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/07_HFA_Application_Deployment.md'>HFA Application Deployment</a>]
+    HFA_Base_Configuration --> HFA_Application_Deployment
     style HFA_Application_Deployment fill:#33FF36,stroke:#333,stroke-width:1px
     HFA_Application_Deployment --> HFA_Integration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/08_HFA_Integration.md'>HFA Integration</a>]
     style HFA_Integration fill:#33FF36,stroke:#333,stroke-width:1px
