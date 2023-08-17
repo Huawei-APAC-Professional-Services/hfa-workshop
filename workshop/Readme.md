@@ -40,6 +40,7 @@ Following the sequence to implement HFA on Huawei Cloud
 ```mermaid
 flowchart LR
     Account[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/01_Account_Management.md'>Account Management</a>]
+    style Account fill:#33FF36,stroke:#333,stroke-width:1px
     Account --> AccountInitialization[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/02_Account_Initialization.md'>Account Initialization</a>]
     AccountInitialization --> LocalEnvironmentSetup[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/03_Local_Env_Setup.md'>Local Environment Setup</a>]
     LocalEnvironmentSetup --> HFA_IAM_Configuration[<a href='https://github.com/Huawei-APAC-Professional-Services/hfa-workshop/blob/main/workshop/content/04_HFA_IAM_Configuration.md'>HFA IAM Configuration</a>]
