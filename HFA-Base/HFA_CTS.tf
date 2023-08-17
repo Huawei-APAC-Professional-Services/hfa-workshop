@@ -1,28 +1,46 @@
-resource "huaweicloud_cts_tracker" "hfa_security_account_system_tracker" {
-  provider = huaweicloud.security
-  bucket_name = var.HFA_Security_OBS_Bucket_Name
+module "hfa_security_account_system_tracker" {
+  source = "../modules/cts"
+  providers = {
+    huaweicloud = huaweicloud.security
+  }
+  hfa_security_obs_bucket_name = var.hfa_security_obs_bucket_name
+  hfa_cts_notification_email_address = var.hfa_cts_notification_email_address
   depends_on = [ huaweicloud_obs_bucket_acl.hfa_cts_log ]
 }
 
-resource "huaweicloud_cts_tracker" "hfa_app_account_system_tracker" {
-  provider = huaweicloud.app
-  bucket_name = var.HFA_Security_OBS_Bucket_Name
+module "hfa_app_account_system_tracker" {
+  source = "../modules/cts"
+  providers = {
+    huaweicloud = huaweicloud.app
+  }
+  hfa_security_obs_bucket_name = var.hfa_security_obs_bucket_name
+  hfa_cts_notification_email_address = var.hfa_cts_notification_email_address
   depends_on = [ huaweicloud_obs_bucket_acl.hfa_cts_log ]
 }
 
-resource "huaweicloud_cts_tracker" "hfa_common_account_system_tracker" {
-  provider = huaweicloud.common
-  bucket_name = var.HFA_Security_OBS_Bucket_Name
+module "hfa_common_account_system_tracker" {
+  source = "../modules/cts"
+  providers = {
+    huaweicloud = huaweicloud.common
+  }
+  hfa_security_obs_bucket_name = var.hfa_security_obs_bucket_name
+  hfa_cts_notification_email_address = var.hfa_cts_notification_email_address
   depends_on = [ huaweicloud_obs_bucket_acl.hfa_cts_log ]
 }
 
-resource "huaweicloud_cts_tracker" "hfa_transit_account_system_tracker" {
-  provider = huaweicloud.transit
-  bucket_name = var.HFA_Security_OBS_Bucket_Name
+module "hfa_transit_account_system_tracker" {
+  source = "../modules/cts"
+  providers = {
+    huaweicloud = huaweicloud.transit
+  }
+  hfa_security_obs_bucket_name = var.hfa_security_obs_bucket_name
+  hfa_cts_notification_email_address = var.hfa_cts_notification_email_address
   depends_on = [ huaweicloud_obs_bucket_acl.hfa_cts_log ]
 }
 
-resource "huaweicloud_cts_tracker" "hfa_iam_account_system_tracker" {
-  bucket_name = var.HFA_Security_OBS_Bucket_Name
+module "hfa_iam_account_system_tracker" {
+  source = "../modules/cts"
+  hfa_security_obs_bucket_name = var.hfa_security_obs_bucket_name
+  hfa_cts_notification_email_address = var.hfa_cts_notification_email_address
   depends_on = [ huaweicloud_obs_bucket_acl.hfa_cts_log ]
 }

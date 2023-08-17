@@ -24,13 +24,13 @@ data "huaweicloud_identity_custom_role" "hfa_transit_account_fake_role" {
 
 resource "huaweicloud_obs_bucket" "hfa_security_log" {
   provider   = huaweicloud.security
-  bucket     = var.HFA_Security_OBS_Bucket_Name
+  bucket     = var.hfa_security_obs_bucket_name
   versioning = true
 }
 
 resource "huaweicloud_obs_bucket_acl" "hfa_cts_log" {
   provider = huaweicloud.security
-  bucket = var.HFA_Security_OBS_Bucket_Name
+  bucket = var.hfa_security_obs_bucket_name
 
   account_permission {
     access_to_bucket = ["READ", "WRITE"]
@@ -57,6 +57,6 @@ resource "huaweicloud_obs_bucket_acl" "hfa_cts_log" {
   }
 }
 
-output "Security_Account_Log_Bucket" {
-  value = var.HFA_Security_OBS_Bucket_Name
+output "hfa_security_obs_bucket_name" {
+  value = var.hfa_security_obs_bucket_name
 }
