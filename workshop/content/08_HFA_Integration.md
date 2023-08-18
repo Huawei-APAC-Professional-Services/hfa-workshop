@@ -6,8 +6,8 @@ This module will responsible for connecting different components on different la
 1. Change to `hfa/HFA-IAM` directory
 2. Execute the following commands with `hfa_terraform` credential to get AK/SK for this module
 ```
-terraform output hfa_iam_pipeline_network_ak
-terraform output hfa_iam_pipeline_network_sk
+terraform output hfa_iam_pipeline_integration_ak
+terraform output hfa_iam_pipeline_integration_sk
 ```
 `hfa_iam_pipeline_network_ak` and `hfa_iam_pipeline_network_sk` allow terraform to read/write terraform state file and make API call to Huawei Cloud to create network resources
 ![GetAKSK](./images/network/001_network_aksk.png)
