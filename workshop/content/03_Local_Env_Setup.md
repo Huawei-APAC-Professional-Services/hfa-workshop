@@ -3,13 +3,13 @@ There are requirements before you can provision resources on Huawei Cloud with t
 
 # Tasks
 ## Install Terraform
-If you haven't installed the Terraform on your computer yet, Please refer to the ![Terraform Document](https://developer.hashicorp.com/terraform/downloads)
+If you haven't installed the Terraform on your computer yet, Please refer to the [Terraform Document](https://developer.hashicorp.com/terraform/downloads)
 
 ## Install Git
-If you haven't installed the Git tool on your computer yet, Please download ![Git](https://git-scm.com/download/win) and install it first
+If you haven't installed the Git tool on your computer yet, Please download [Git](https://git-scm.com/download/win) and install it first
 
 ## Install Visual Studio Code
-we recommend using ![Visual Studio Code](https://code.visualstudio.com/download) to edit terraform configuration, but you can choose whatever text editors you like.
+we recommend using [Visual Studio Code](https://code.visualstudio.com/download) to edit terraform configuration, but you can choose whatever text editors you like.
 
 ## Configure Environment Variables
 Before you run any terraform code, Please configure the environment variables accordingly
