@@ -12,7 +12,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 4. On the `Create Agency` page, provide the following parameters
    Agency Name: `hfa_terraform` or names that conforms to your naming convention
    Agency Type: `account`
-   Delegated Account: `Centralized IAM Account`
+   Delegated Account: Centralized IAM Account(Provide the account name which has a `_iam` suffix)
    Validity Period: Unlimited
 ![CreateAgency13](./images/006_CreateAgency_13.png)
 5. Choose `Next` and search and check `security administrator` in the search box
