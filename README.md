@@ -11,7 +11,7 @@ This is reference implementation of Huaweicloud HFA for workshop purpose, this i
 * Security Account
 * Production Account(workloads)
 
-:high_brightness: In HFA, the master account also need to be initialized to implement security baseline and delegate some organization responsibilities to other accounts, Due to the accounts limitations of a guided workshop, this implementation won't do anything to the master account, but budget will be allocated in advance to member accounts.
+:high_brightness: In HFA, the master account also need to be initialized to implement security baseline and delegate some organization responsibilities to other accounts, Due to the accounts limitations of the training workshop environment, this implementation won't do anything to the master account, but budget will be allocated in advance to member accounts.
 
 # HFA Terraform Implementation Introduction
 Implementing all HFA elements with Terraform at this stage is not possible because of service limitations. we follow the hierarchy below to implement HFA on Huawei Cloud.
