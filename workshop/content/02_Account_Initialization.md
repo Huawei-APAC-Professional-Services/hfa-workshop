@@ -149,7 +149,8 @@ At this moment, we can not manipulate member accounts directly from master accou
 6. Choose `User Groups` at the left panel of the console and Choose `Create User Group` at the upper right corner of the console
 ![CreateAgency04](./images/006_CreateAgency_04.png)
 7. Create `hfa_terraform` user group
-![CreateAgency05](./images/006_CreateAgency_05.png)
+![CreateAgency05](./images/006_CreateAgency_05.png)  
+
 8. Choose the user group created in last step and assign the role create in step 4 and step 5 to the group
 ![CreateAgency06](./images/006_CreateAgency_06.png)
 ![CreateAgency07](./images/006_CreateAgency_07.png)
