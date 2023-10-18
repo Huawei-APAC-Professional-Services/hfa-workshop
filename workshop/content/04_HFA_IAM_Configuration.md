@@ -5,7 +5,7 @@ IAM resources is the foundation of the HFA implementation, it need to be created
 ## Clone HFA Repository
 1. open you shell or powershell/cmd to clone the HFA terraform example configurations
 ```
-git clone https://github.com/Huawei-APAC-Professional-Services/hfa.git
+git clone https://github.com/Huawei-APAC-Professional-Services/hfa-workshop.git
 ```
 
 ## Configure Environment Variables
