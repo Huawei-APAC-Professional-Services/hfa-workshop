@@ -4,7 +4,7 @@ In this module, we will deploy a nginx server in `Production Account`
 # Tasks
 ## Configure Environment Variables
 1. Change to `hfa/HFA-IAM` directory
-2. Execute the following commands to get AK/SK for this module
+2. Execute the following commands to get AK/SK for this module(if you are in a team to apply this module, Please ask your team member who is responsible for HFA IAM Configuration to execute the following command and provide you the AK/SK)
 ```
 terraform output hfa_iam_pipeline_app_ak
 terraform output hfa_iam_pipeline_app_sk
@@ -17,7 +17,7 @@ The following figure use powershell as example
 ## Apply hfa/HFA-App Configuration
 4. Change to  `hfa/HFA-App` directory
 5. Open `obs.tfbackend` file to configure terraform backend
-6. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform policy](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+6. Change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 7. Open `terraform.tfvars` file to configure input variables
 8. Change `hfa_terraform_state_bucket` and `hfa_iam_state_key` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
 9. Execute the following commands to format terraform configuration and Initialize terraform

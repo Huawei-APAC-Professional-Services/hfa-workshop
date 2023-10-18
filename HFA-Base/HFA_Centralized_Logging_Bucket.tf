@@ -29,9 +29,9 @@ resource "huaweicloud_obs_bucket" "hfa_security_log" {
 }
 
 resource "huaweicloud_obs_bucket_acl" "hfa_cts_log" {
-  provider = huaweicloud.security
-  depends_on = [ huaweicloud_obs_bucket.hfa_security_log ]
-  bucket   = var.hfa_security_obs_bucket_name
+  provider   = huaweicloud.security
+  depends_on = [huaweicloud_obs_bucket.hfa_security_log]
+  bucket     = var.hfa_security_obs_bucket_name
 
   account_permission {
     access_to_bucket = ["READ", "WRITE"]
