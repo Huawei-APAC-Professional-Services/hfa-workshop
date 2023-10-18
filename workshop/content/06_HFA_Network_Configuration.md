@@ -4,7 +4,7 @@ This module will responsible for creating all the network resources across diffe
 # Tasks
 ## Configure Environment Variables
 1. Change to `hfa/HFA-IAM` directory
-2. Execute the following commands with `hfa_terraform` user credential to get AK/SK for this module
+2. Execute the following commands with `hfa_terraform` user credential to get AK/SK for this module(if you are in a team to apply this module, Please ask your team member who is responsible for HFA IAM Configuration to execute the following command and provide you the AK/SK)
 ```
 terraform output hfa_iam_pipeline_network_ak
 terraform output hfa_iam_pipeline_network_sk
