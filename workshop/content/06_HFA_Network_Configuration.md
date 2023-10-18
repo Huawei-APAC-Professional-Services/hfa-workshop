@@ -19,7 +19,7 @@ The following figure use powershell as example
 ## Create Basic Network Resources
 1. Change to  `hfa/HFA-Network` directory
 2. Open `obs.tfbackend` file to configure terraform backend
-3. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform policy](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+3. Change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 4. Open `terraform.tfvars` file to configure input variables
 5. Change `hfa_terraform_state_bucket` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
 6. Execute the following commands to format terraform configuration and Initialize terraform
