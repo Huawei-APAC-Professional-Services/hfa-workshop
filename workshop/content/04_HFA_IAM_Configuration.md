@@ -42,10 +42,12 @@ terraform init -backend-config="obs.tfbackend"
 ```
 ![TerraformInitialization](./images/IAM_Account/003_Terraform_Initialization.png)
 7. Execute `terraform validate` command to validate the configuration files
-![TerraformValidation](./images/IAM_Account/004_Terraform_Validation.png)
+![TerraformValidation](./images/IAM_Account/004_Terraform_Validation.png)  
+
 8. Execute `terraform plan` to show what actions Terraform would take to apply the current configuration
 ![TerraformPlan](./images/IAM_Account/005_Terraform_Plan_01.png)
 ![TerraformPlan](./images/IAM_Account/005_Terraform_Plan_02.png)
+
 9. Execute `terraform apply` to apply the configuration to Huawei Cloud, normally, we will use generated plan from step 8 to make sure the consistency. The command will give you prompt to confirm the action, please enter `yes`
 ![TerraformApply](./images/IAM_Account/005_Terraform_Apply_01.png)
 10. After a successful terraform apply, you will get all the outputs for the future use, there is no need to save the output, we can query all the output at any time
