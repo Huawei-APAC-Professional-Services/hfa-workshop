@@ -4,7 +4,7 @@ Security Logs are important for security operation, we will transfer all CTS log
 # Tasks
 ## Configure Environment Variables
 1. Change to `hfa/HFA-IAM` directory
-2. Execute the following commands with `hfa_terraform` user credential to get AK/SK for this module
+2. Execute the following commands with `hfa_terraform` user credential to get AK/SK for this module(if you are in a team to apply this module, Please ask your team member who is responsible for [HFA IAM Configuration](./04_HFA_IAM_Configuration.md)) to execute the following command and provide you the AK/SK
 ```
 terraform output hfa_iam_pipeline_base_ak
 terraform output hfa_iam_pipeline_base_sk
