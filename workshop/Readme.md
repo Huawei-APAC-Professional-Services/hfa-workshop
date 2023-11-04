@@ -12,13 +12,13 @@ We hope this workshop will help you gain the necessary knowledge about HFA and T
 This is a technical workshop helping customer build their Huawei Cloud HFA environment with Terraform. The participants should have experiences with Huawei Cloud and have basic knowledge of HFA.
 
 # Prerequisites
-Unless you participate a guided workshop, you will need to meet the requirements below to complete the workshop.
+Unless you participate a workshop hosted by Huawei APAC Professional Service, you will need to meet the following requirements to complete the workshop.
 
 * A Huawei Cloud account - Master/Management Account
 * 5 email addresses, one for each of the following Huawei Cloud accounts:
     * Centralized IAM account - The Account for managing access to HFA environment
     * Transit Account - where some core network services are deployed
-    * Security Operation Account - where security related logs like CTS logs are stored and from where security services like SIEM might be managed
+    * Security Operation Account - where security related logs like CTS logs are stored and in where security services like SIEM might be managed
     * Common Services Account - where shared services are deployed
     * Application Account - where production workloads are deployed
 

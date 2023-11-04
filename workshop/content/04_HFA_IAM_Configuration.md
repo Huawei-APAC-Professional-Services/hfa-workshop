@@ -27,14 +27,14 @@ Use the following commands to check environment variables on different platform:
 * Windows Powershell: gci/dir env:
 
 ## Modify and Apply terraform configuration
-1. Change to  `hfa/HFA-IAM` directory
+1. Change to  `hfa-workshop/HFA-IAM` directory
 2. Open `obs.tfbackend` file to configure terraform backend
 3. Change the `bucket` parameters to the name of the bucket that you created in the [hfa_terraform bucket](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 ![001_tfbackend](./images/IAM_Account/001_Changetfbackend.png)(For simplicity, Just change the `bucket` parameter, if you change the key, you need to change some the configurations in other modules)
 4. Open `terraform.tfvars` file to configure input variables
 5. Change the value of the variables in this file. all the parameters ending with `_key` can be customized as you like, but must be consistent with backend configuration of every module
 ![iamtfvars](./images/IAM_Account/002_Changetfvars.png)
-6. Initialize Terraform configuration by executing the following command. `terraform fmt` wiil rewrite all Terraform configuration files to a canonical format. `terraform init` will initialize a new or existing Terraform working directory by creating
+6. Initialize Terraform configuration by executing the following command. `terraform fmt` wiil rewrite all Terraform configuration files to a canonical format. `terraform init -backend-config="obs.tfbackend"` will initialize a new or existing Terraform working directory by creating
   initial files, loading any remote state, downloading modules, etc
 ```
 terraform fmt

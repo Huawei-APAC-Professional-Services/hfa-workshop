@@ -2,7 +2,7 @@
 At this moment, we can not manipulate member accounts directly from master account, so a agency in every member account except `Centralized IAM Account` should be created manually in advance to allow Terraform access.
 
 # Tasks
-## Create `hfa_terraform` Agency in HFA accounts
+## Create `hfa_iam_base` Agency in HFA accounts
 :hourglass: Team members can do this in different accounts simultaneously
 1. Use Huawei Cloud Account log in to `Security Operation Account`
 2. Choose `Service List` on the upper left corner of the console and Choose `Identify and Access Management`
@@ -10,7 +10,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 3. Choose `Agencies` -> `Create Agency`
 ![CreateAgency12](./images/006_CreateAgency_12.png)
 4. On the `Create Agency` page, provide the following parameters
-   Agency Name: `hfa_terraform` or names that conforms to your naming convention
+   Agency Name: `hfa_iam_base` or names that conforms to your naming convention
    Agency Type: `account`
    Delegated Account: Centralized IAM Account(Provide the account name which has a `_iam` suffix)
    Validity Period: Unlimited
@@ -22,7 +22,7 @@ At this moment, we can not manipulate member accounts directly from master accou
 7. Choose `Next` to finish the agency creation
 8. Choose `Projects` from left panel of IAM service
 ![CreateAgency16](./images/006_CreateProject_18.png)
-9. If there is no `ap-southeast-1` project exists, choose `Create Project` on the upper right corner of the page
+9. If there is no `ap-southeast-3` project exists, choose `Create Project` on the upper right corner of the page
 10. On the project creation page, select `AP-Singapore` from the dropdown menu for `Region` parameter and then choose `Cancel`, you can see a project for Singapore region has been created
 ![CreateProject01](./images/006_CreateProject_19.png)
 ![CreateProject02](./images/006_CreateProject_20.png)

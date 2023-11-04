@@ -1,5 +1,7 @@
 # HFA Reference Implementation
 
+:zap: This workshop requires Terraform 1.6.3, Please check you terraform version before getting started with `terraform version` command.
+
 HFA is a well-architected, multi-account Huawei Cloud environment that  is a starting point from which you can deploy workloads and applications. It provides a baseline to get started with multi-account architecture, identity and access management, governance, data security, network design, and logging.
 
 HFA follows key design principles across different design areas which accommodate all application portfolios and enable application migration, modernization, and innovation at scale.
