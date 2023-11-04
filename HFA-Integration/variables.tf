@@ -4,6 +4,7 @@ variable "hfa_terraform_state_bucket" {
 
 variable "hfa_iam_state_key" {
   type = string
+  default = "hfa-iam/terraform.tfstate"
 }
 
 variable "hfa_terraform_state_region" {
@@ -13,17 +14,15 @@ variable "hfa_terraform_state_region" {
 
 variable "hfa_network_state_key" {
   type = string
+  default = "hfa-network/terraform.tfstate"
 }
 
 variable "hfa_network_workload_state_key" {
   type = string
+  default = "hfa-network-workloads/terraform.tfstate"
 }
 
 variable "hfa_app_state_key" {
   type = string
-}
-
-variable "hfa_default_region" {
-  type    = string
-  default = "ap-southeast-3"
+  default = "hfa-app/terraform.tfstate"
 }

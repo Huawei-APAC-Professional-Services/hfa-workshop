@@ -24,6 +24,7 @@ data "terraform_remote_state" "hfa_iam" {
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+    skip_requesting_account_id = true
   }
 }
 
@@ -37,6 +38,7 @@ data "terraform_remote_state" "hfa_network" {
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+    skip_requesting_account_id = true
   }
 }
 
@@ -50,6 +52,7 @@ data "terraform_remote_state" "hfa_network_workload" {
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+    skip_requesting_account_id = true
   }
 }
 
@@ -63,6 +66,7 @@ data "terraform_remote_state" "hfa_app" {
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+    skip_requesting_account_id = true
   }
 }
 
@@ -70,15 +74,15 @@ data "terraform_remote_state" "hfa_app" {
 # Default provider which will have access to Central IAM accounts, all ohter provider will be 
 # assuming agency to access other accounts 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
 }
 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
   alias  = "transit"
 
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_network_admin_agency_name
-    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account_name
   }
 }

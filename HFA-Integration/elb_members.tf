@@ -4,3 +4,7 @@ resource "huaweicloud_elb_member" "hfa_app_prod_nginx_01" {
   protocol_port = 80
   pool_id       = data.terraform_remote_state.hfa_network.outputs.hfa_transit_nginx_pool_id
 }
+
+output "nginx_access_address" {
+  value = "http://${data.terraform_remote_state.hfa_network.outputs.hfa_transit_ingress_elb_ip}"
+}
