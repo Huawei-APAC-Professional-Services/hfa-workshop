@@ -11,21 +11,17 @@ variable "hfa_terraform_state_region" {
 
 variable "hfa_iam_state_key" {
   type    = string
-  default = "Object key for HFA-IAM state"
+  default = "hfa-iam/terraform.tfstate"
 }
 
 variable "hfa_network_state_key" {
   type = string
+  default = "hfa-network/terraform.tfstate"
 }
 
 variable "hfa_network_workload_state_key" {
   type = string
-}
-
-variable "hfa_default_region" {
-  type        = string
-  description = "Using default region otherwise specified"
-  default     = "ap-southeast-3"
+  default = "hfa-network-workloads/terraform.tfstate"
 }
 
 variable "nginx_admin_pass" {
