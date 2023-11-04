@@ -1,47 +1,20 @@
-resource "huaweicloud_identity_role" "hfa_state_kms" {
-  name        = "HFA_State_KMS"
-  description = "Allowing access encrypted object in OBS"
-  type        = "AX"
-  policy = jsonencode(
-    {
-      "Version" : "1.1",
-      "Statement" : [
-        {
-          "Effect" : "Allow",
-          "Action" : [
-            "kms:dek:encrypt",
-            "kms:cmk:getMaterial",
-            "kms:cmk:create",
-            "kms:grant:retire",
-            "kms:cmk:getRotation",
-            "kms:cmkTag:create",
-            "kms:cmk:decrypt",
-            "kms:partition:create",
-            "kms:cmk:update",
-            "kms:cmk:get",
-            "kms:dek:create",
-            "kms:partition:list",
-            "kms:partition:get",
-            "kms:grant:revoke",
-            "kms:cmk:encrypt",
-            "kms:cmk:getQuota",
-            "kms:cmk:list",
-            "kms:cmk:getInstance",
-            "kms:cmk:generate",
-            "kms:cmk:verify",
-            "kms:cmk:crypto",
-            "kms:cmk:sign",
-            "kms:dek:crypto",
-            "kms:dek:decrypt",
-            "kms:grant:create",
-            "kms:grant:list",
-            "kms:cmk:deleteMaterial",
-            "kms:cmk:getPublicKey",
-            "kms:cmkTag:list",
-            "kms:cmk:enable"
-          ]
-        }
-      ]
-    }
-  )
+// This file fetch all system defined role data
+data "huaweicloud_identity_role" "readonly" {
+  display_name = "IAM ReadOnlyAccess"
+}
+
+data "huaweicloud_identity_role" "cts_administrator" {
+  display_name = "CTS Administrator"
+}
+
+data "huaweicloud_identity_role" "obs_administrator" {
+  display_name = "OBS Administrator"
+}
+
+data "huaweicloud_identity_role" "smn_fullaccess" {
+  display_name = "SMN FullAccess"
+}
+
+data "huaweicloud_identity_role" "rms_fullaccess" {
+  display_name = "RMS FullAccess"
 }
