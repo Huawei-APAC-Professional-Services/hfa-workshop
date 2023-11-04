@@ -2,7 +2,7 @@ terraform {
   required_providers {
     huaweicloud = {
       source  = "huaweicloud/huaweicloud"
-      version = "~> 1.54.0"
+      version = ">= 1.57.0"
     }
   }
   backend "s3" {}
@@ -10,7 +10,7 @@ terraform {
 
 # Need to set HW_ACCESS_KEY and HW_SECRET_KEY environment variables for default provider
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
 }
 
 data "terraform_remote_state" "hfa_iam" {
@@ -23,46 +23,58 @@ data "terraform_remote_state" "hfa_iam" {
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+    skip_requesting_account_id  = true
+    skip_s3_checksum            = true
   }
 }
 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
+  alias  = "iam"
+
+  assume_role {
+    agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_iam_account_name
+  }
+}
+
+provider "huaweicloud" {
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
   alias  = "security"
 
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
-    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_name
   }
 }
 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
   alias  = "app"
 
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
-    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_app_account
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_app_account_name
   }
 }
 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
   alias  = "transit"
 
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
-    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account_name
   }
 }
 
 provider "huaweicloud" {
-  region = var.hfa_default_region
+  region = data.terraform_remote_state.hfa_iam.outputs.hfa_main_region
   alias  = "common"
 
   assume_role {
     agency_name = data.terraform_remote_state.hfa_iam.outputs.hfa_base_agency_name
-    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_common_account
+    domain_name = data.terraform_remote_state.hfa_iam.outputs.hfa_common_account_name
   }
 }
 
