@@ -11,6 +11,14 @@ resource "huaweicloud_vpc" "hfa_common_prod" {
   tags = { "Name" : "hfa_common_prod" }
 }
 
+resource "huaweicloud_vpc_route" "common_vpc_to_er" {
+  provider = huaweicloud.common
+  vpc_id      = huaweicloud_vpc.hfa_common_prod.id
+  destination = "0.0.0.0/0"
+  type        = "er"
+  nexthop     = data.terraform_remote_state.hfa_network.outputs.hfa_transit_er_prod_id
+}
+
 resource "huaweicloud_er_propagation" "hfa_er_to_common" {
   provider = huaweicloud.transit
   instance_id    = local.hfa_transit_er_prod_id

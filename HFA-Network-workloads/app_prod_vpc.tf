@@ -15,6 +15,14 @@ resource "huaweicloud_vpc" "hfa_app_prod" {
   tags = { "Name" : "hfa_app_prod" }
 }
 
+resource "huaweicloud_vpc_route" "app_vpc_to_er" {
+  provider = huaweicloud.app
+  vpc_id      = huaweicloud_vpc.hfa_app_prod.id
+  destination = "0.0.0.0/0"
+  type        = "er"
+  nexthop     = data.terraform_remote_state.hfa_network.outputs.hfa_transit_er_prod_id
+}
+
 resource "huaweicloud_er_propagation" "hfa_er_to_app" {
   provider = huaweicloud.transit
   instance_id    = local.hfa_transit_er_prod_id
