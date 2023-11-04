@@ -11,13 +11,7 @@ variable "hfa_terraform_state_region" {
 
 variable "hfa_iam_state_key" {
   type    = string
-  default = "Object key for HFA-Base state"
-}
-
-variable "hfa_default_region" {
-  type        = string
-  description = "Using default region otherwise specified"
-  default     = "ap-southeast-3"
+  default = "hfa-iam/terraform.tfstate"
 }
 
 variable "hfa_er_prod_asn" {
@@ -28,7 +22,7 @@ variable "hfa_er_prod_asn" {
 
 variable "hfa_er_prod_name" {
   type        = string
-  default     = "HFA_ER_Prod"
+  default     = "hfa_er_prod"
   description = "Default Name for Production ER"
 }
 
