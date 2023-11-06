@@ -3,6 +3,7 @@ variable "hfa_main_region" {
   description = "default region for Huawei Cloud Terraform Provider"
   default     = "ap-southeast-3"
 }
+
 variable "hfa_iam_base_agency_name" {
   type        = string
   description = "HFA base agency in every acount except Central IAM Account for delegating permission to Terraform for automation"

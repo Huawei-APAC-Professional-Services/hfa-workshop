@@ -25,3 +25,7 @@ output "hfa_security_account_name" {
 output "hfa_security_account_id" {
   value = module.security_account_iam.hfa_account_id
 }
+
+output "hfa_security_account_obs_replication_agency_name" {
+  value = module.security_account_iam.hfa_obs_replication_agency_name
+}
