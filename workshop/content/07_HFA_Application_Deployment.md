@@ -17,9 +17,9 @@ The following figure use powershell as example
 ## Apply hfa/HFA-App Configuration
 4. Change to  `hfa/HFA-App` directory
 5. Open `obs.tfbackend` file to configure terraform backend
-6. Change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+6. Only change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 7. Open `terraform.tfvars` file to configure input variables
-8. Change `hfa_terraform_state_bucket` and `hfa_iam_state_key` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
+8. Change `hfa_terraform_state_bucket` to match your environment.
 9. Execute the following commands to format terraform configuration and Initialize terraform
 ```
 terraform fmt

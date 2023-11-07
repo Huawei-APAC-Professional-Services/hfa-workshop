@@ -16,11 +16,10 @@ The following figure use powershell as example
 ## Apply hfa/HFA-Base Configuration
 1. Change to `hfa/HFA-Base` directory
 2. Open `obs.tfbackend` file to configure terraform backend
-3. Change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+3. Only change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 4. Open `terraform.tfvars` file to configure input variables
    * `hfa_terraform_state_bucket`: the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
-   * `hfa_cts_notification_email_address`: the email you would like to receive security alerts
-   * `hfa_security_obs_bucket_name`: obs bucket name that store logging, it name must be uniq
+   * `hfa_terraform_state_region`: the location of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 
 6. Execute the following commands to format terraform configuration and Initialize terraform
 ```

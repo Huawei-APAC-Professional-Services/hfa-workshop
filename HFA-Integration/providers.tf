@@ -62,7 +62,7 @@ data "terraform_remote_state" "hfa_app" {
     bucket                      = var.hfa_terraform_state_bucket
     key                         = var.hfa_app_state_key
     region                      = var.hfa_terraform_state_region
-    endpoint                    = "https://obs.ap-southeast-3.myhuaweicloud.com"
+    endpoint = "https://obs.ap-southeast-3.myhuaweicloud.com"
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true

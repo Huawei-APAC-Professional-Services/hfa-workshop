@@ -19,9 +19,9 @@ The following figure use powershell as example
 ## Apply hfa/HFA-Integration Configuration
 4. Change to  `hfa/HFA-Integration` directory
 5. Open `obs.tfbackend` file to configure terraform backend
-6. Change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
+6. Only change the `bucket` parameters to the name of the bucket that you created in the [Account Initialization](./02_Account_Initialization.md#create-a-obs-bucket-for-terraform-state-storage)
 7. Open `terraform.tfvars` file to configure input variables
-8. Change `hfa_terraform_state_bucket` and `hfa_iam_state_key` to match your environment, you can leave all the cidr as it is if you don't have specific requirements.
+8. Change `hfa_terraform_state_bucket` to match your environment
 9. Execute the following commands to format terraform configuration and Initialize terraform
 ```
 terraform fmt
@@ -34,4 +34,4 @@ Success! The configuration is valid
 
 11. Execute `terraform plan` to generate a execution plan and view all the changes
 12. Execute `terraform apply` to apply all the configuration to Huawei Cloud
-13. Log in to `Transit Account` and find ELB public address, find if you can access the nginx
+13. Access the nginx through the address provided by this module to check if you can access a nginx welcome page.
