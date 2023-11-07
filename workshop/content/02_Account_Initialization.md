@@ -87,7 +87,7 @@ If you are participating a workshop hosted by Huawei Professional Service Team, 
 6. Create `hfa_terraform` user group
 ![CreateAgency05](./images/006_CreateAgency_05.png)  
 
-7. Choose the user group created in last step and assign the role create in step 4 and step 5 to the group
+7. Choose the user group created in last step and assign role `hfa_terraform` and `hfa_terraform_kms` the group
 ![CreateAgency06](./images/006_CreateAgency_06.png)
 ![CreateAgency07](./images/006_CreateAgency_07.png)
 ![CreateAgency08](./images/006_CreateAgency_08.png)
