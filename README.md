@@ -2,7 +2,7 @@
 
 :zap: This workshop requires Terraform 1.6.3, Please check you terraform version before getting started with `terraform version` command.
 
-:information_source: Download Link
+:information_source: If Terraform is not installed on your laptop, Please refer to the following [Download Link](https://developer.hashicorp.com/terraform/downloads)
 ```
 https://developer.hashicorp.com/terraform/downloads
 ```
