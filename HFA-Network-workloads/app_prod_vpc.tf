@@ -21,6 +21,7 @@ resource "huaweicloud_vpc_route" "app_vpc_to_er" {
   destination = "0.0.0.0/0"
   type        = "er"
   nexthop     = data.terraform_remote_state.hfa_network.outputs.hfa_transit_er_prod_id
+  depends_on = [ huaweicloud_er_association.hfa_app_prod,huaweicloud_er_vpc_attachment.hfa_app_prod,huaweicloud_er_propagation.hfa_er_to_app ]
 }
 
 resource "huaweicloud_er_propagation" "hfa_er_to_app" {
