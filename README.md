@@ -7,7 +7,7 @@
 https://developer.hashicorp.com/terraform/downloads
 ```
 
-HFA is a well-architected, multi-account Huawei Cloud environment that  is a starting point from which you can deploy workloads and applications. It provides a baseline to get started with multi-account architecture, identity and access management, governance, data security, network design, and logging.
+HFA is a well-architected, multi-account Huawei Cloud environment that is a starting point from which you can deploy workloads and applications with confidence in security and infrastructure. It provides a baseline that covers multiple design areas including multi-account architecture, identity and access management, governance, data security, network design, and logging.
 
 HFA follows key design principles across different design areas which accommodate all application portfolios and enable application migration, modernization, and innovation at scale.
 
@@ -25,11 +25,11 @@ Implementing all HFA elements with Terraform at this stage is not possible becau
 
 ![HFA-Hierarchy](./HFA_Implementation_Hierarchy.png)
 
-By adopting the hierarchy, the complex enterprise environment is isolated into different terraform state files. Different level will use different credential that only can access the corresponding state file and assume different agency. In principal, Every level in this hierarchy can only write to the state file corresponding to this level but can read the state file one level down and the bottom level state file. But currently we may need to read state file from multiple underlying level due to the incomplete API support from certain services.
+By adopting the hierarchy, the complex enterprise environment is isolated into different terraform state files. Different level will use different credential that only can access the corresponding state file and assume designated agency. In principal, Every level in this hierarchy can only write to the state file corresponding to this level but can read the state file one level down and the bottom level state file. But currently we may need to read state file from multiple underlying level due to the incomplete API support from certain services but the principle is that the dependencies on terraform state file are always top-down.
 
-The current HFA implementation hierarchy only contains four level, but it cloud be expanded to more levels to meet customer scenario. And it is also possible that one level contains multiple state file for different purpose.
+The current HFA implementation hierarchy only contains four level, but it cloud be expanded to more levels to meet customer scenario. And it is also possible that one level contains multiple state file for different purpose, like at application level, we may prefer splitting it into multiple state file by services or application to meet agile development requirements.
 
-But with this approach, the state file still contains credentials and other sensitive information, normally the state file and relevant DevOps tools should be deployed in `Common Services Account`, but it will make the implementation more complex, so we will store state file in `Centralized IAM Account` to reduce the complexity for the workshop.
+But with this approach, the state file still contains credentials and other sensitive information, normally the state file and relevant DevOps tools should be deployed in `Common Services Account` or dedicated `DevOps Account`, but it will make the implementation more complex, so we will store state file in `Centralized IAM Account` to reduce the complexity for the workshop.
  
 The reference implementation contains multiple modules that are corresponding to the hierarchy, the following table describe this relationship
 |  Module  |  Hierarchy  |
