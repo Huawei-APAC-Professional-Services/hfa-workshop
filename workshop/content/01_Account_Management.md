@@ -46,3 +46,29 @@ erDiagram
 ## Allocate Budget
 Sufficient budget must be allocated to all the member accounts before starting to use any non-free services.
 
+## Create `hfa_iam_base` Agency in HFA accounts
+:hourglass: Team members can do this in different accounts simultaneously
+1. Use Huawei Cloud Account log in to `Security Operation Account`
+2. Choose `Service List` on the upper left corner of the console and Choose `Identify and Access Management`
+![CreateAgency01](./images/006_CreateAgency_01.png)
+3. Choose `Agencies` -> `Create Agency`
+![CreateAgency12](./images/006_CreateAgency_12.png)
+4. On the `Create Agency` page, provide the following parameters
+   Agency Name: `hfa_iam_base` or names that conforms to your naming convention
+   Agency Type: `account`
+   Delegated Account: Centralized IAM Account(Provide the account name which has a `_iam` suffix)
+   Validity Period: Unlimited
+![CreateAgency13](./images/006_CreateAgency_13.png)
+5. Choose `Next` and search and check `security administrator` in the search box
+![CreateAgency14](./images/006_CreateAgency_14.png)
+6. Choose `Next`, make sure the Scope is `All resources`
+![CreateAgency15](./images/006_CreateAgency_15.png)
+7. Choose `Next` to finish the agency creation
+8. Choose `Projects` from left panel of IAM service
+![CreateAgency16](./images/006_CreateProject_18.png)
+9. If there is no `ap-southeast-3` project exists, choose `Create Project` on the upper right corner of the page
+10. On the project creation page, select `AP-Singapore` from the dropdown menu for `Region` parameter and then choose `Cancel`, you can see a project for Singapore region has been created
+![CreateProject01](./images/006_CreateProject_19.png)
+![CreateProject02](./images/006_CreateProject_20.png)
+11. Create the same agency in all other member accounts except `Centralized IAM Account` by repeating step 1 to step 10
+

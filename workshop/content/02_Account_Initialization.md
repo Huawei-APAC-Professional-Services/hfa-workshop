@@ -1,35 +1,15 @@
 # Introduction
-At this moment, we can not manipulate member accounts directly from master account, so a agency in every member account except `Centralized IAM Account` should be created manually in advance to allow Terraform access.
+The purpose of this module is to establish the basic environment for applying HFA Terraform configurations. for this workshop, a OBS bucket is required for storing Terraform state file.
+
+:information_source: If you are doing self-paced workshop, Please start from [Account Management](01_Account_Management.md)
+
+If you are participating a workshop hosted by Huawei Professional Service Team, the facilitator has created the following resource for you.
+* `hfa_iam_base` in every accounts to allow Terraform manage IAM resources
+* `hfa_terraform_kms` in Centralized IAM account to allow Terraform access KMS service for encryption and decryption
 
 # Tasks
-## Create `hfa_iam_base` Agency in HFA accounts
-:hourglass: Team members can do this in different accounts simultaneously
-1. Use Huawei Cloud Account log in to `Security Operation Account`
-2. Choose `Service List` on the upper left corner of the console and Choose `Identify and Access Management`
-![CreateAgency01](./images/006_CreateAgency_01.png)
-3. Choose `Agencies` -> `Create Agency`
-![CreateAgency12](./images/006_CreateAgency_12.png)
-4. On the `Create Agency` page, provide the following parameters
-   Agency Name: `hfa_iam_base` or names that conforms to your naming convention
-   Agency Type: `account`
-   Delegated Account: Centralized IAM Account(Provide the account name which has a `_iam` suffix)
-   Validity Period: Unlimited
-![CreateAgency13](./images/006_CreateAgency_13.png)
-5. Choose `Next` and search and check `security administrator` in the search box
-![CreateAgency14](./images/006_CreateAgency_14.png)
-6. Choose `Next`, make sure the Scope is `All resources`
-![CreateAgency15](./images/006_CreateAgency_15.png)
-7. Choose `Next` to finish the agency creation
-8. Choose `Projects` from left panel of IAM service
-![CreateAgency16](./images/006_CreateProject_18.png)
-9. If there is no `ap-southeast-3` project exists, choose `Create Project` on the upper right corner of the page
-10. On the project creation page, select `AP-Singapore` from the dropdown menu for `Region` parameter and then choose `Cancel`, you can see a project for Singapore region has been created
-![CreateProject01](./images/006_CreateProject_19.png)
-![CreateProject02](./images/006_CreateProject_20.png)
-11. Create the same agency in all other member accounts except `Centralized IAM Account` by repeating step 1 to step 10
-
-## Create a OBS bucket for terraform state storage
-1. Use Huawei Cloud Account log in to `Centralized IAM Account`
+## Create a OBS bucket as terraform backend
+1. Log in to `Centralized IAM Account`
 2. Choose `Object Storage Service`
 3. Choose `Create Bucket` on the upper left of the console
 4. For the bucket parameters, change the following parameters, leave the other parameters as default
@@ -102,61 +82,17 @@ At this moment, we can not manipulate member accounts directly from master accou
 ```
 ![CreateAgency03](./images/006_CreateAgency_03.png)
 
-5. Terraform need KMS permission to write and read object from OBS, so create `hfa-terraform-kms` policy with the following policy
-```
-{
-    "Version": "1.1",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:dek:encrypt",
-                "kms:cmk:getMaterial",
-                "kms:cmk:create",
-                "kms:grant:retire",
-                "kms:cmk:getRotation",
-                "kms:cmkTag:create",
-                "kms:cmk:decrypt",
-                "kms:partition:create",
-                "kms:cmk:update",
-                "kms:cmk:get",
-                "kms:dek:create",
-                "kms:partition:list",
-                "kms:partition:get",
-                "kms:grant:revoke",
-                "kms:cmk:encrypt",
-                "kms:cmk:getQuota",
-                "kms:cmk:list",
-                "kms:cmk:getInstance",
-                "kms:cmk:generate",
-                "kms:cmk:verify",
-                "kms:cmk:crypto",
-                "kms:cmk:sign",
-                "kms:dek:crypto",
-                "kms:dek:decrypt",
-                "kms:grant:create",
-                "kms:grant:list",
-                "kms:cmk:deleteMaterial",
-                "kms:cmk:getPublicKey",
-                "kms:cmkTag:list",
-                "kms:cmk:enable"
-            ]
-        }
-    ]
-}
-```
-![CreateKMSrole](./images/006_CreateAgency_17.png)
-6. Choose `User Groups` at the left panel of the console and Choose `Create User Group` at the upper right corner of the console
+5. Choose `User Groups` at the left panel of the console and Choose `Create User Group` at the upper right corner of the console
 ![CreateAgency04](./images/006_CreateAgency_04.png)
-7. Create `hfa_terraform` user group
+6. Create `hfa_terraform` user group
 ![CreateAgency05](./images/006_CreateAgency_05.png)  
 
-8. Choose the user group created in last step and assign the role create in step 4 and step 5 to the group
+7. Choose the user group created in last step and assign the role create in step 4 and step 5 to the group
 ![CreateAgency06](./images/006_CreateAgency_06.png)
 ![CreateAgency07](./images/006_CreateAgency_07.png)
 ![CreateAgency08](./images/006_CreateAgency_08.png)
 ![CreateAgency09](./images/006_CreateAgency_09.png)
-9. Create `hfa_terraform` user and add it to the `hfa_terraform` user group, Please note that this user should only have `Programmatic access` to Huawei Cloud
+8. Create `hfa_terraform` user and add it to the `hfa_terraform` user group, Please note that this user should only have `Programmatic access` to Huawei Cloud
 ![CreateAgency10](./images/006_CreateAgency_10.png)
 ![CreateAgency11](./images/006_CreateAgency_11.png)
 
