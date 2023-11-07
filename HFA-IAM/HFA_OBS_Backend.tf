@@ -1,5 +1,5 @@
 data "huaweicloud_identity_custom_role" "hfa_state_kms" {
-  name = "hfa_state_kms"
+  name = "hfa_terraform_kms"
 }
 
 // HFA-Base

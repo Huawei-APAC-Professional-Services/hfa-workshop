@@ -14,6 +14,10 @@ git clone https://github.com/Huawei-APAC-Professional-Services/hfa-workshop.git
 :hammer_and_wrench: The credentials will allow terraform to access Huawei Cloud and read/write the state file with name you designated when you createe the policy for `hfa_terraform` group
 
 2. check if the following environment variables exist
+
+:information_source: *Because Terraform doesn't accept new backend contribution, So we have to use S3 backend to interact with OBS, this is why we need to configure AWS environment variables here. For production, we recommend to use PostgreSQL or Consul as Terraform backend.*
+
+
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
 * AWS_DEFAULT_REGION
