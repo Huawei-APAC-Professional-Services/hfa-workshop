@@ -1,8 +1,8 @@
 locals {
-  central_cts_region   = var.hfa_cts_log_region == null ? data.terraform_remote_state.hfa_iam.outputs.hfa_main_region : var.hfa_cts_log_region
-  cts_regional_list    = toset(compact([for v in var.hfa_allowed_regions : v == local.central_cts_region ? "" : v]))
-  cts_regional_buckets = { for v in huaweicloud_obs_bucket.hfa_cts_log : v.region => v.id }
-  cts_regions          = merge(local.cts_regional_buckets, zipmap([huaweicloud_obs_bucket.hfa_cts_centralized_log.region], [huaweicloud_obs_bucket.hfa_cts_centralized_log.id]))
+  central_cts_region         = var.hfa_cts_log_region == null ? data.terraform_remote_state.hfa_iam.outputs.hfa_main_region : var.hfa_cts_log_region
+  cts_regional_list          = toset(compact([for v in var.hfa_allowed_regions : v == local.central_cts_region ? "" : v]))
+  cts_regional_obs           = { for v in huaweicloud_obs_bucket.hfa_cts_log : v.region => v.id }
+  cts_all_regions_obs_config = merge(local.cts_regional_obs, zipmap([huaweicloud_obs_bucket.hfa_cts_centralized_log.region], [huaweicloud_obs_bucket.hfa_cts_centralized_log.id]))
   smn_allow_accounts_list = join(",", [
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_app_account_id}:root",
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_common_account_id}:root",
@@ -43,7 +43,7 @@ resource "huaweicloud_obs_bucket" "hfa_config_log" {
 }
 
 resource "huaweicloud_obs_bucket_acl" "hfa_cts_log" {
-  for_each   = local.cts_regions
+  for_each   = local.cts_all_regions_obs_config
   region     = each.key
   provider   = huaweicloud.security
   depends_on = [huaweicloud_obs_bucket.hfa_cts_log]
@@ -126,30 +126,3 @@ resource "huaweicloud_obs_bucket_replication" "cts_obs_replication" {
 #    ]
 #  })
 #}
-
-resource "huaweicloud_rms_resource_aggregation_authorization" "hfa_app_account" {
-  provider   = huaweicloud.app
-  account_id = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_id
-}
-
-resource "huaweicloud_rms_resource_aggregation_authorization" "hfa_iam_account" {
-  provider   = huaweicloud.iam
-  account_id = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_id
-}
-
-resource "huaweicloud_rms_resource_aggregation_authorization" "hfa_common_account" {
-  provider   = huaweicloud.common
-  account_id = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_id
-}
-
-resource "huaweicloud_rms_resource_aggregation_authorization" "hfa_transit_account" {
-  provider   = huaweicloud.transit
-  account_id = data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_id
-}
-
-resource "huaweicloud_rms_resource_aggregator" "main" {
-  provider    = huaweicloud.security
-  name        = var.hfa_config_aggregator_name
-  type        = "ACCOUNT"
-  account_ids = local.all_except_security_accounts
-}
