@@ -1,10 +1,3 @@
-locals {
-  non_security_accounts = [
-    data.terraform_remote_state.hfa_iam.outputs.hfa_iam_account_id,
-    data.terraform_remote_state.hfa_iam.outputs.hfa_common_account_id,
-  ]
-}
-
 module "hfa_security_account_baseline" {
   providers = {
     huaweicloud = huaweicloud.security
