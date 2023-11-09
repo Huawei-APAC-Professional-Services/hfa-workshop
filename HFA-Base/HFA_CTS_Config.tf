@@ -3,6 +3,7 @@ locals {
   cts_regional_list          = toset(compact([for v in var.hfa_allowed_regions : v == local.central_cts_region ? "" : v]))
   cts_regional_obs           = { for v in huaweicloud_obs_bucket.hfa_cts_log : v.region => v.id }
   cts_all_regions_obs_config = merge(local.cts_regional_obs, zipmap([huaweicloud_obs_bucket.hfa_cts_centralized_log.region], [huaweicloud_obs_bucket.hfa_cts_centralized_log.id]))
+  /*
   smn_allow_accounts_list = join(",", [
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_app_account_id}:root",
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_common_account_id}:root",
@@ -10,12 +11,7 @@ locals {
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_security_account_id}:root",
     "urn:csp:iam::${data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account_id}:root"
   ])
-  all_except_security_accounts = [
-    data.terraform_remote_state.hfa_iam.outputs.hfa_app_account_id,
-    data.terraform_remote_state.hfa_iam.outputs.hfa_common_account_id,
-    data.terraform_remote_state.hfa_iam.outputs.hfa_iam_account_id,
-    data.terraform_remote_state.hfa_iam.outputs.hfa_transit_account_id
-  ]
+  */
 }
 
 resource "random_uuid" "bucket_suffix" {}
@@ -81,7 +77,7 @@ resource "huaweicloud_smn_topic" "hfa_config_topic" {
   region                = var.hfa_config_topic_region == null ? data.terraform_remote_state.hfa_iam.outputs.hfa_main_region : var.hfa_config_topic_region
   name                  = var.hfa_config_topic_name
   display_name          = var.hfa_config_topic_display_name
-  users_publish_allowed = local.smn_allow_accounts_list
+  users_publish_allowed = local.config_smn_topic_allow_accounts_list
   introduction          = "created for hfa"
 }
 

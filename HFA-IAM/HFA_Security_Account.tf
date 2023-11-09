@@ -4,7 +4,7 @@ module "security_account_iam" {
   hfa_security_admin_agency_name   = var.hfa_security_admin_agency_name
   hfa_network_admin_agency_name    = var.hfa_network_admin_agency_name
   hfa_base_agency_name             = var.hfa_base_agency_name
-  hfa_security_account_name        = var.hfa_security_account_name
+  hfa_log_account_name             = local.hfa_log_account_name
   hfa_cts_log_transfer_agency_name = var.hfa_cts_log_transfer_agency_name
   providers = {
     huaweicloud = huaweicloud.security
@@ -12,7 +12,7 @@ module "security_account_iam" {
 }
 
 module "security_account_iam_baseline" {
-  source                           = "github.com/Huawei-APAC-Professional-Services/terraform-module/hfa-iam-baseline"
+  source = "github.com/Huawei-APAC-Professional-Services/terraform-module/hfa-iam-baseline"
   providers = {
     huaweicloud = huaweicloud.security
   }
