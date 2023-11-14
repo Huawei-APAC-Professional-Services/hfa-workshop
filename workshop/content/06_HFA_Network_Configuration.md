@@ -63,5 +63,3 @@ terraform fmt
 terraform init -backend-config="obs.tfbackend"
 ```
 23. Execute `terraform apply` command
-24. Log in to the `Common Services Account` and `Production Account` separately and set the default vpc route(0.0.0.0/0) to ER 
-![er05](./images/network/003_network_er_06.png)

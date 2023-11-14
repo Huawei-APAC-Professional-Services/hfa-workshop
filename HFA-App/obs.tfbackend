@@ -1,4 +1,4 @@
-bucket   = "hfa-terraform-state-go"
+bucket   = "hfa-terraform-state-now"
 key      = "hfa-app/terraform.tfstate"
 region   = "ap-southeast-3"
 endpoint = "https://obs.ap-southeast-3.myhuaweicloud.com"
