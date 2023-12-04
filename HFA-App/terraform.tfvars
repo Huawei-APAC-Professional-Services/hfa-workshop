@@ -1,1 +1,1 @@
-hfa_terraform_state_bucket     = "hfa-terraform-state-now"
+hfa_terraform_state_bucket     = "terraform-state-singapore"
